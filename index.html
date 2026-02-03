@@ -579,8 +579,17 @@
         <div id="book-grid" class="grid">
             <!-- Les livres seront insérés ici par JS -->
         </div>
-        <div id="map-container"
-            style="display:none; height: 600px; width: 100%; border-radius: var(--card-radius); box-shadow: var(--card-shadow); z-index: 1;">
+        <div id="map-view-container" style="display:none; width: 100%; height: 600px; gap: 20px;">
+            <div id="map-container"
+                style="height: 100%; flex: 1.5; border-radius: var(--card-radius); box-shadow: var(--card-shadow); z-index: 1;">
+            </div>
+            <div id="side-panel"
+                style="flex: 1; display: none; flex-direction: column; overflow-y: auto; background: var(--card-bg); border-radius: var(--card-radius); box-shadow: var(--card-shadow); padding: 20px; max-height: 600px;">
+                <h3 id="side-panel-title"
+                    style="font-family: 'Playfair Display', serif; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                    Pays</h3>
+                <div id="side-panel-content" class="side-panel-list"></div>
+            </div>
         </div>
     </div>
 
@@ -1123,126 +1132,386 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             return code ? `https://flagcdn.com/w40/${code}.png` : null;
         }
 
+        // Initialize A2 to A3 mapping + Custom Fixes
+        const countryAlpha2ToAlpha3 = {
+            "AF": "AFG", "AX": "ALA", "AL": "ALB", "DZ": "DZA", "AS": "ASM", "AD": "AND", "AO": "AGO", "AI": "AIA", "AQ": "ATA", "AG": "ATG",
+            "AR": "ARG", "AM": "ARM", "AW": "ABW", "AU": "AUS", "AT": "AUT", "AZ": "AZE", "BS": "BHS", "BH": "BHR", "BD": "BGD", "BB": "BRB",
+            "BY": "BLR", "BE": "BEL", "BZ": "BLZ", "BJ": "BEN", "BM": "BMU", "BT": "BTN", "BO": "BOL", "BQ": "BES", "BA": "BIH", "BW": "BWA",
+            "BV": "BVT", "BR": "BRA", "IO": "IOT", "BN": "BRN", "BG": "BGR", "BF": "BFA", "BI": "BDI", "CV": "CPV", "KH": "KHM", "CM": "CMR",
+            "CA": "CAN", "KY": "CYM", "CF": "CAF", "TD": "TCD", "CL": "CHL", "CN": "CHN", "CX": "CXR", "CC": "CCK", "CO": "COL", "KM": "COM",
+            "CD": "COD", "CG": "COG", "CK": "COK", "CR": "CRI", "CI": "CIV", "HR": "HRV", "CU": "CUB", "CW": "CUW", "CY": "CYP", "CZ": "CZE",
+            "DK": "DNK", "DJ": "DJI", "DM": "DMA", "DO": "DOM", "EC": "ECU", "EG": "EGY", "SV": "SLV", "GQ": "GNQ", "ER": "ERI", "EE": "EST",
+            "SZ": "SWZ", "ET": "ETH", "FK": "FLK", "FO": "FRO", "FJ": "FJI", "FI": "FIN", "FR": "FRA", "GF": "GUF", "PF": "PYF", "TF": "ATF",
+            "GA": "GAB", "GM": "GMB", "GE": "GEO", "DE": "DEU", "GH": "GHA", "GI": "GIB", "GR": "GRC", "GL": "GRL", "GD": "GRD", "GP": "GLP",
+            "GU": "GUM", "GT": "GTM", "GG": "GGY", "GN": "GIN", "GW": "GNB", "GY": "GUY", "HT": "HTI", "HM": "HMD", "VA": "VAT", "HN": "HND",
+            "HK": "HKG", "HU": "HUN", "IS": "ISL", "IN": "IND", "ID": "IDN", "IR": "IRN", "IQ": "IRQ", "IE": "IRL", "IM": "IMN", "IL": "ISR",
+            "IT": "ITA", "JM": "JAM", "JP": "JPN", "JE": "JEY", "JO": "JOR", "KZ": "KAZ", "KE": "KEN", "KI": "KIR", "KP": "PRK", "KR": "KOR",
+            "KW": "KWT", "KG": "KGZ", "LA": "LAO", "LV": "LVA", "LB": "LBN", "LS": "LSO", "LR": "LBR", "LY": "LBY", "LI": "LIE", "LT": "LTU",
+            "LU": "LUX", "MO": "MAC", "MG": "MDG", "MW": "MWI", "MY": "MYS", "MV": "MDV", "ML": "MLI", "MT": "MLT", "MH": "MHL", "MQ": "MTQ",
+            "MR": "MRT", "MU": "MUS", "YT": "MYT", "MX": "MEX", "FM": "FSM", "MD": "MDA", "MC": "MCO", "MN": "MNG", "ME": "MNE", "MS": "MSR",
+            "MA": "MAR", "MZ": "MOZ", "MM": "MMR", "NA": "NAM", "NR": "NRU", "NP": "NPL", "NL": "NLD", "NC": "NCL", "NZ": "NZL", "NI": "NIC",
+            "NE": "NER", "NG": "NGA", "NU": "NIU", "NF": "NFK", "MK": "MKD", "MP": "MNP", "NO": "NOR", "OM": "OMN", "PK": "PAK", "PW": "PLW",
+            "PS": "PSE", "PA": "PAN", "PG": "PNG", "PY": "PRY", "PE": "PER", "PH": "PHL", "PN": "PCN", "PL": "POL", "PT": "PRT", "PR": "PRI",
+            "QA": "QAT", "RE": "REU", "RO": "ROU", "RU": "RUS", "RW": "RWA", "BL": "BLM", "SH": "SHN", "KN": "KNA", "LC": "LCA", "MF": "MAF",
+            "PM": "SPM", "VC": "VCT", "WS": "WSM", "SM": "SMR", "ST": "STP", "SA": "SAU", "SN": "SEN", "RS": "SRB", "SC": "SYC", "SL": "SLE",
+            "SG": "SGP", "SX": "SXM", "SK": "SVK", "SI": "SVN", "SB": "SLB", "SO": "SOM", "ZA": "ZAF", "GS": "SGS", "SS": "SSD", "ES": "ESP",
+            "LK": "LKA", "SD": "SDN", "SR": "SUR", "SJ": "SJM", "SE": "SWE", "CH": "CHE", "SY": "SYR", "TW": "TWN", "TJ": "TJK", "TZ": "TZA",
+            "TH": "THA", "TL": "TLS", "TG": "TGO", "TK": "TKL", "TO": "TON", "TT": "TTO", "TN": "TUN", "TR": "TUR", "TM": "TKM", "TC": "TCA",
+            "TV": "TUV", "UG": "UGA", "UA": "UKR", "AE": "ARE", "GB": "GBR", "US": "USA", "UM": "UMI", "UY": "URY", "UZ": "UZB", "VU": "VUT",
+            "VE": "VEN", "VN": "VNM", "VG": "VGB", "VI": "VIR", "WF": "WLF", "EH": "ESH", "YE": "YEM", "ZM": "ZMB", "ZW": "ZWE"
+        };
+
+
         let map = null;
-        let markers = [];
+        let geojsonLayer = null;
+        let geoJsonData = null; // Store fetched data based on ISO codes logic from the previous map step
 
         function initMap() {
-            if (map) return;
-
-            if (typeof L === 'undefined') {
-                console.error("Leaflet (L) n'est pas chargé.");
-                document.getElementById('map-container').innerHTML = '<div style="padding:20px; text-align:center;">Erreur: Carte indisponible (Leaflet non chargé). Vérifiez votre connexion.</div>';
+            if (map) {
+                if (currentTab === 'map') {
+                    setTimeout(() => map.invalidateSize(), 100);
+                }
                 return;
             }
 
-            try {
-                map = L.map('map-container').setView([20, 0], 2);
-
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                    subdomains: 'abcd',
-                    maxZoom: 19
-                }).addTo(map);
-
-                updateMapMarkers();
-            } catch (e) {
-                console.error("Erreur initMap:", e);
+            if (typeof L === 'undefined') {
+                document.getElementById('map-container').innerHTML = '<div style="padding:20px; text-align:center;">Leaflet non chargé.</div>';
+                return;
             }
+
+            map = L.map('map-container').setView([20, 0], 2);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Fetch GeoJSON directly
+            fetch('https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson')
+                .then(res => res.json())
+                .then(data => {
+                    geoJsonData = data;
+                    updateMapMarkers();
+                })
+                .catch(err => {
+                    console.error("Erreur chargement GeoJSON", err);
+                });
         }
 
+        let selectedCountryLayer = null; // To track selection
+
         function updateMapMarkers() {
-            if (!map) return;
+            if (!map || !geoJsonData) return;
 
-            // Clear existing markers
-            markers.forEach(m => map.removeLayer(m));
-            markers = [];
+            if (geojsonLayer) {
+                map.removeLayer(geojsonLayer);
+            }
 
-            // Compile all data into a map: Country -> { status, books }
-            // Status priority: Read > ToRead > Waiting
+            // Colors
+            const colors = {
+                'read': '#e67e22',   // Orange
+                'toread': '#3498db', // Blue
+                'waiting': '#95a5a6', // Gray
+                'default': '#cccccc',
+                'highlight': '#8e44ad'
+            };
+
+            // Prepare status map: A3 Code -> Status
             const countryStatus = {};
 
-            // Helper to process lists
-            const processList = (list, type) => {
+            // Helper to populate status
+            const populateStatus = (list, type) => {
                 list.forEach(book => {
-                    const c = book.country;
-                    if (!countryStatus[c]) {
-                        countryStatus[c] = { status: type, books: [] };
-                    }
-                    // Upgrade status if needed
-                    if (type === 'read') countryStatus[c].status = 'read';
-                    else if (type === 'toread' && countryStatus[c].status === 'waiting') countryStatus[c].status = 'toread';
+                    const cName = book.country.trim();
+                    const cCode2 = countryCodes[cName];
+                    if (cCode2) {
+                        const cCode3 = countryAlpha2ToAlpha3[cCode2.toUpperCase()];
+                        if (cCode3) {
+                            if (!countryStatus[cCode3]) {
+                                countryStatus[cCode3] = { status: type, name: cName, books: [] };
+                            }
+                            // Priority: Read > ToRead > Waiting
+                            if (type === 'read') countryStatus[cCode3].status = 'read';
+                            else if (type === 'toread' && countryStatus[cCode3].status === 'waiting') countryStatus[cCode3].status = 'toread';
 
-                    if (book.title !== "En attente de recommandation") {
-                        countryStatus[c].books.push({ title: book.title, author: book.author, type: type });
+                            // Prevent duplicates in book list if possible or just push
+                            if (book.title !== "En attente de recommandation") {
+                                countryStatus[cCode3].books.push(book);
+                            }
+                        }
                     }
                 });
             };
 
-            processList(booksData.waiting, 'waiting'); // Process waiting first (lowest priority)
-            processList(booksData.toread, 'toread');
-            processList(booksData.read, 'read');
+            populateStatus(booksData.waiting, 'waiting');
+            populateStatus(booksData.toread, 'toread');
+            populateStatus(booksData.read, 'read');
 
-            // Define colors
-            const colors = {
-                'read': '#e67e22',   // Orange
-                'toread': '#3498db', // Bleu
-                'waiting': '#95a5a6'  // Gris
-            };
-
-            Object.keys(countryStatus).forEach(country => {
-                const code = countryCodes[country] ? countryCodes[country].toUpperCase() : null;
-                const coords = code ? countryCoords[code] : null;
-
-                if (coords) {
-                    const data = countryStatus[country];
-                    const color = colors[data.status];
-
-                    const markerHtml = `
-                        <div style="
-                            background-color: ${color};
-                            width: 12px;
-                            height: 12px;
-                            border-radius: 50%;
-                            border: 2px solid white;
-                            box-shadow: 0 0 4px rgba(0,0,0,0.3);
-                        "></div>
-                    `;
-
-                    const icon = L.divIcon({
-                        className: 'custom-div-icon',
-                        html: markerHtml,
-                        iconSize: [16, 16],
-                        iconAnchor: [8, 8]
-                    });
-
-                    const marker = L.marker(coords, { icon: icon }).addTo(map);
-
-                    // Popup Content
-                    let popupContent = `<div style="font-family: 'Lato', sans-serif;">
-                        <h3 style="margin: 0 0 5px 0; font-family: 'Playfair Display', serif;">
-                            ${country} 
-                            ${getFlagUrl(country) ? `<img src="${getFlagUrl(country)}" style="height:12px; vertical-align:middle;">` : ''}
-                        </h3>`;
-
-                    if (data.books.length > 0) {
-                        popupContent += `<ul style="padding-left: 15px; margin: 5px 0 0 0; font-size: 0.85rem;">`;
-                        data.books.forEach(b => {
-                            let itemColor = colors[b.type];
-                            popupContent += `<li style="color: ${itemColor}; margin-bottom: 2px;">
-                                ${b.title} <span style="color: #999; font-size: 0.75rem;">(${b.author})</span>
-                             </li>`;
-                        });
-                        popupContent += `</ul>`;
-                    } else {
-                        popupContent += `<div style="font-size: 0.8rem; font-style: italic; color: #7f8c8d;">En attente de lecture...</div>`;
-                    }
-                    popupContent += `</div>`;
-
-                    marker.bindPopup(popupContent);
-                    markers.push(marker);
+            function getFeatureCode(feature) {
+                if (feature.properties) {
+                    if (feature.properties.ISO_A3 && feature.properties.ISO_A3 !== '-99') return feature.properties.ISO_A3;
+                    if (feature.properties.ADM0_A3) return feature.properties.ADM0_A3;
                 }
+                return feature.id;
+            }
+
+            function style(feature) {
+                const code = getFeatureCode(feature); // GeoJSON ISO code
+                const data = countryStatus[code];
+                const status = data ? data.status : 'default';
+
+                return {
+                    fillColor: colors[status] || colors['default'],
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7
+                };
+            }
+
+            function highlightFeature(e) {
+                const layer = e.target;
+                layer.setStyle({
+                    weight: 2,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.9
+                });
+                if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                    layer.bringToFront();
+                }
+            }
+
+            function resetHighlight(e) {
+                if (selectedCountryLayer !== e.target) {
+                    geojsonLayer.resetStyle(e.target);
+                }
+            }
+
+            function onCountryClick(e) {
+                const layer = e.target;
+                const feature = layer.feature;
+                const code = getFeatureCode(feature);
+                const data = countryStatus[code];
+
+                // Reset previous selection style
+                if (selectedCountryLayer && selectedCountryLayer !== layer) {
+                    geojsonLayer.resetStyle(selectedCountryLayer);
+                }
+
+                selectedCountryLayer = layer;
+                layer.setStyle({
+                    weight: 3,
+                    color: '#333',
+                    fillOpacity: 1
+                });
+
+                showSidePanel(data, feature.properties.NAME || feature.properties.name);
+                L.DomEvent.stopPropagation(e); // Prevent map click from closing
+            }
+
+            geojsonLayer = L.geoJson(geoJsonData, {
+                style: style,
+                onEachFeature: function (feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: onCountryClick
+                    });
+                }
+            }).addTo(map);
+
+            // Add empty map click listener to clear selection
+            map.on('click', () => {
+                if (selectedCountryLayer) {
+                    geojsonLayer.resetStyle(selectedCountryLayer);
+                    selectedCountryLayer = null;
+                }
+                hideSidePanel();
             });
         }
+
+        function showSidePanel(data, defaultName) {
+            const sidePanel = document.getElementById('side-panel');
+            const content = document.getElementById('side-panel-content');
+            const title = document.getElementById('side-panel-title');
+
+            sidePanel.style.display = 'flex';
+
+            // If no data (country not in our lists)
+            if (!data) {
+                title.textContent = defaultName;
+                content.innerHTML = `<div style="font-style:italic; color:#999;">Pas de livres enregistrés pour ce pays.</div>`;
+                return;
+            }
+
+            title.innerHTML = `
+                ${data.name} 
+                ${getFlagUrl(data.name) ? `<img src="${getFlagUrl(data.name)}" style="height:20px; vertical-align:middle; margin-left:10px;">` : ''}
+            `;
+
+            if (data.books.length === 0) {
+                content.innerHTML = `<div style="font-style:italic; color:#999;">En attente de recommandation...</div>`;
+            } else {
+                // Render books similar to the main grid but in a list
+                const html = data.books.map(book => {
+                    // Reuse existing logic manually or simplify
+                    return createSidePanelBookItem(book);
+                }).join('');
+                content.innerHTML = html;
+            }
+        }
+
+        function hideSidePanel() {
+            document.getElementById('side-panel').style.display = 'none';
+        }
+
+        function createSidePanelBookItem(book) {
+            // Simplified book view for side panel
+            const coverUrl = getCoverUrlForBook(book);
+            return `
+                <div style="display: flex; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
+                    ${coverUrl ? `<img src="${coverUrl}" style="width: 60px; height: 90px; object-fit: cover; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">` : ''}
+                    <div>
+                        <div style="font-weight: bold; font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-primary);">${book.title}</div>
+                        <div style="font-style: italic; font-size: 0.9rem; color: #666; margin-top: 5px;">${book.author}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Mapping for titles that differ between 'Read' list and 'Cover' DB
+        const titleMapping = {
+            "girls of riyadh": "les filles de riyadh",
+            "the bleeding of the stone": "le saignement de la pierre",
+            "a brief history of seven killings": "brève histoire de sept meurtres",
+            "le dégoût": "le dégoût",
+            "knots": "noeuds",
+            "the cry of the dove": "le cri de la colombe",
+            "a long way gone": "le chemin parcouru",
+            "the three body problem": "le probleme a trois corps",
+            "le miel de l'amertume": "le miel et l'amertume"
+        };
+
+        // Manual covers for books missing from DB or with hard-to-find covers
+        const manualCovers = {
+            "le bruit des choses qui tombent": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1377773444i/16114691.jpg",
+            "treize heures": "https://www.babelio.com/couv/CVT_Une-Enquete-de-linspecteur-Benny-Griessel--13-he_5760.jpg",
+            "être sans destin": "https://www.babelio.com/couv/CVT_tre-sans-destin_3393.jpg",
+            "etre sans destin": "https://www.babelio.com/couv/CVT_tre-sans-destin_3393.jpg",
+            "la trilogie de shiva": "https://images-eu.ssl-images-amazon.com/images/I/51C9w95nauL._SX195_.jpg",
+            "le roi fantôme": "https://m.media-amazon.com/images/I/415CC6Nw59L._SX195_.jpg",
+            "le miel et l'amertume": "https://www.babelio.com/couv/CVT_Le-miel-et-lamertume_9653.jpg",
+            "la fête au bouc": "https://www.babelio.com/couv/CVT_La-fete-au-Bouc_1471.jpg",
+            "stupeurs et tremblements": "https://www.babelio.com/couv/CVT_Stupeur-et-Tremblements_7939.jpeg",
+            "l'étrangère aux yeux bleus": "https://www.babelio.com/couv/CVT_Letrangere-aux-yeux-bleus_4973.jpg",
+            "mon frère": "https://m.media-amazon.com/images/I/41GCjJNW7QL._SX195_.jpg", // Jamaica Kincaid
+            "la voleuse de livres": "https://www.babelio.com/couv/CVT_cvt_La-Voleuse-de-livres_2718.jpg",
+            "ali et nino": "https://images-na.ssl-images-amazon.com/images/I/419GG1WTVJL._SX210_.jpg",
+            "l'eau rouge": "https://www.babelio.com/couv/CVT_Leau-rouge_7448.jpg",
+            "garçons de cristal": "https://www.babelio.com/couv/CVT_Garcons-de-cristal_2812.jpg",
+            "coeur de feu : j'étais une enfant soldat": "https://images-na.ssl-images-amazon.com/images/I/51M%2BYR6MllL._SX210_.jpg",
+            "après la pluie le beau temps": "https://www.babelio.com/couv/CVT_Apres-la-pluie-le-beau-temps_3734.jpg",
+            "un père pour mes rêves": "https://images-na.ssl-images-amazon.com/images/I/41BEovviEoL._SX210_.jpg",
+            "les matins de jénine": "https://www.babelio.com/couv/CVT_cvt_Les-matins-de-Jenine_9966.jpg",
+            "le chemin parcouru": "https://m.media-amazon.com/images/I/517IhhZEheL._SX195_.jpg",
+            "a long way gone": "https://m.media-amazon.com/images/I/517IhhZEheL._SX195_.jpg",
+            "noeuds": "https://covers.openlibrary.org/b/isbn/9780143112983-L.jpg",
+            "les jardins de cannelle": "https://covers.openlibrary.org/b/isbn/9782221089804-L.jpg",
+            "bel abîme": "https://www.babelio.com/couv/CVT_Bel-abime_8284.jpg",
+            "femme interdite": "https://covers.openlibrary.org/b/isbn/9782867467561-L.jpg",
+            "the cry of the dove": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1328822603i/868537.jpg",
+            "le cri de la colombe": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1328822603i/868537.jpg",
+            "the three body problem": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1415428227i/20518872.jpg",
+            "le monde des hommes": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1539207584i/42273846.jpg",
+            "la première femme": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1709908666i/203309474.jpg",
+            "un morceau de ciel sur terre": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1634568960i/57615696.jpg",
+            "many lives": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1347389428i/665788.jpg",
+            "follow the rabbit-proof fence": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1699125301i/1074300.jpg",
+            "la sorcière d'os": "https://m.media-amazon.com/images/I/41XR2MnpeFL._SX195_.jpg",
+            "la sorcière à la jambe d'os": "https://m.media-amazon.com/images/I/41XR2MnpeFL._SX195_.jpg",
+            "une île au loin": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1649342868i/60767553.jpg",
+            "la trêve": "https://www.babelio.com/couv/CVT_La-Treve_3280.jpg",
+            "une odyssée birmane": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1517102450i/38220867.jpg",
+            "weeding the flowerbeds": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1349067284i/7091840.jpg",
+            "the president": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1565038089i/73723.jpg",
+            "fils d'homme": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1644950517i/60424377.jpg",
+            "prophet song": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1689541792i/158875813.jpg",
+            "meursault contre-enquête": "https://www.babelio.com/couv/CVT_CVT_Meursault-contre-enquete_1459.jpg",
+            "rouge impératrice": "https://www.babelio.com/couv/CVT_Rouge-imperatrice_7806.jpg",
+            "anne of green gables": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1615094578i/8127.jpg",
+            "anne of avonlea": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1764879073i/77390.jpg",
+            "anne of the island": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1679457783i/123280461.jpg",
+            "anne's house of dreams": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1442471048i/77394.jpg",
+            "anne of ingleside": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1285712495i/77391.jpg",
+            "la montagne de l'âme": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1647536938i/2735103.jpg",
+            "10 minutes et 38 secondes dans ce monde étrange": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1579377624i/50535648.jpg",
+            "qimmik": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1696674090i/199308548.jpg",
+            "gouverneurs de la rosée": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1594343387i/54457611.jpg",
+            "guillaume et natalie": "https://www.babelio.com/couv/CVT_cvt_Guillaume-et-Nathalie_6964.jpg",
+            "ave maria": "https://images-eu.ssl-images-amazon.com/images/I/41S89n490yL._SX195_.jpg",
+            "dispersés": "https://images-na.ssl-images-amazon.com/images/I/31%2BJ6b-a8sL._SX210_.jpg",
+            "la papeterie tsubaki": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1766191562i/40671013.jpg",
+            "bleu nuit": "https://www.babelio.com/couv/CVT_Bleu-nuit_12.jpg",
+            "le jardin des brumes du soir": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1464554678i/30314997.jpg",
+            "the house of doors": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1698331937i/65215270.jpg",
+            "le dernier frère": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1427810682i/2117265.jpg",
+            "les vaisseaux frères": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1509028282i/36480877.jpg",
+            "l'hibiscus pourpre": "https://www.babelio.com/couv/CVT_Lhibiscus-pourpre_1178.jpg",
+            "l’autre moitié du soleil": "https://www.babelio.com/couv/CVT_cvt_Lautre-moitie-du-soleil_8159.jpg",
+            "notes sur le chagrin": "https://www.babelio.com/couv/CVT_Notes-sur-le-chagrin_6640.jpg",
+            "americanah": "https://www.babelio.com/couv/CVT_Americanah_1301.jpg",
+            "le dernier vœu": "https://www.babelio.com/couv/CVT_Le-Sorceleur-tome-1--Le-Dernier-Voeu-reedition_2699.jpg",
+            "celles qui attendent": "https://www.babelio.com/couv/CVT_Celles-qui-attendent_1998.jpg",
+            "les veilleurs de sangomar": "https://www.babelio.com/couv/CVT_Les-veilleurs-de-Sangomar_3376.jpg",
+            "une si longue lettre": "https://www.babelio.com/couv/CVT_Une-si-longue-lettre_3781.jpg",
+            "le jeu de l'ange": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327669415i/6642699.jpg",
+            "stöld": "https://www.babelio.com/couv/CVT_Stld_8988.jpg",
+            "straff": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1674497530i/63053281.jpg",
+            "près de la mer": "https://www.babelio.com/couv/CVT_Pres-de-la-mer_1924.jpg",
+            "paradis": "https://www.babelio.com/couv/CVT_Paradis_8258.jpg",
+            "l'assassin royal": "https://www.babelio.com/couv/CVT_15529_834672.jpg",
+            "le vieil homme et la mer": "https://www.babelio.com/couv/CVT_Le-vieil-homme-et-la-mer_1592.jpg",
+            "beloved": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1632283781i/6149.jpg",
+            "terre des oublis": "https://www.babelio.com/couv/CVT_13487_724458.jpg",
+            "les paradis aveugles": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1396368049i/21817982.jpg",
+            "une vie de choix": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1508183488i/10784478.jpg",
+            "les vies de papier": "https://www.babelio.com/couv/CVT_Les-vies-de-parpier_7177.jpg",
+            "métaphysique des tubes": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1337079993i/75519.jpg",
+            "tropique de la violence": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1470999182i/31431710.jpg",
+            "les désorientés": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1369837397i/16034631.jpg",
+            "seul dans berlin": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1369153160i/1541034.jpg",
+            "autobiographie de ma mère": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1514398366i/37751629.jpg",
+            "karnak café": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1320467205i/3118639.jpg",
+            "mon bel oranger": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1420543552i/24319911.jpg"
+        };
+        // Helper to extract cover URL logic from getBookHtml
+        function getCoverUrlForBook(book) {
+            let normalizedTitle = book.title.trim().toLowerCase().replace(/’/g, "'");
+            // use the global maps
+            // Reuse titleMapping logic if needed (copying parts of getBookHtml for access)
+            // global titleMapping used
+
+            if (titleMapping[normalizedTitle]) {
+                normalizedTitle = titleMapping[normalizedTitle];
+            }
+
+            let coverUrl = manualCovers[normalizedTitle] || manualCovers[book.title.trim().toLowerCase()];
+
+            if (!coverUrl && typeof coverMap !== 'undefined') {
+                coverUrl = coverMap[normalizedTitle];
+                if (!coverUrl) {
+                    const keys = Object.keys(coverMap);
+                    const match = keys.find(k => k.includes(normalizedTitle) || (normalizedTitle.length > 5 && k.includes(normalizedTitle.substring(0, 10))));
+                    if (match) coverUrl = coverMap[match];
+                }
+            }
+            return coverUrl;
+        }
+
+
 
 
         function updateCounter(books) {
@@ -1295,11 +1564,14 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
 
         function renderBooks(booksToRender) {
             const grid = document.getElementById('book-grid');
-            const mapContainer = document.getElementById('map-container');
+            const mapViewContainer = document.getElementById('map-view-container');
+            const searchInput = document.getElementById('searchInput');
 
             if (currentTab === 'map') {
-                mapContainer.style.display = 'block';
+                mapViewContainer.style.display = 'flex'; // Use flex for split view
                 grid.style.display = 'none';
+                searchInput.parentElement.style.display = 'none'; // Hide search in map view
+
                 setTimeout(() => {
                     if (map) map.invalidateSize();
                 }, 100);
@@ -1308,8 +1580,9 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
                 return;
             }
 
-            mapContainer.style.display = 'none';
+            mapViewContainer.style.display = 'none';
             grid.style.display = ''; // Reset display style
+            searchInput.parentElement.style.display = ''; // Show search
 
             if (booksToRender) {
                 updateCounter(booksToRender);
@@ -1353,111 +1626,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
                 booksByCountry['Cuba'].reverse();
             }
 
-            // Mapping for titles that differ between 'Read' list and 'Cover' DB
-            const titleMapping = {
-                "girls of riyadh": "les filles de riyadh",
-                "the bleeding of the stone": "le saignement de la pierre",
-                "a brief history of seven killings": "brève histoire de sept meurtres",
-                "le dégoût": "le dégoût",
-                "knots": "noeuds",
-                "the cry of the dove": "le cri de la colombe",
-                "a long way gone": "le chemin parcouru",
-                "the three body problem": "le probleme a trois corps",
-                "le miel de l'amertume": "le miel et l'amertume"
-            };
 
-            // Manual covers for books missing from DB or with hard-to-find covers
-            const manualCovers = {
-                "le bruit des choses qui tombent": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1377773444i/16114691.jpg",
-                "treize heures": "https://www.babelio.com/couv/CVT_Une-Enquete-de-linspecteur-Benny-Griessel--13-he_5760.jpg",
-                "être sans destin": "https://www.babelio.com/couv/CVT_tre-sans-destin_3393.jpg",
-                "etre sans destin": "https://www.babelio.com/couv/CVT_tre-sans-destin_3393.jpg",
-                "la trilogie de shiva": "https://images-eu.ssl-images-amazon.com/images/I/51C9w95nauL._SX195_.jpg",
-                "le roi fantôme": "https://m.media-amazon.com/images/I/415CC6Nw59L._SX195_.jpg",
-                "le miel et l'amertume": "https://www.babelio.com/couv/CVT_Le-miel-et-lamertume_9653.jpg",
-                "la fête au bouc": "https://www.babelio.com/couv/CVT_La-fete-au-Bouc_1471.jpg",
-                "stupeurs et tremblements": "https://www.babelio.com/couv/CVT_Stupeur-et-Tremblements_7939.jpeg",
-                "l'étrangère aux yeux bleus": "https://www.babelio.com/couv/CVT_Letrangere-aux-yeux-bleus_4973.jpg",
-                "mon frère": "https://m.media-amazon.com/images/I/41GCjJNW7QL._SX195_.jpg", // Jamaica Kincaid
-                "la voleuse de livres": "https://www.babelio.com/couv/CVT_cvt_La-Voleuse-de-livres_2718.jpg",
-                "ali et nino": "https://images-na.ssl-images-amazon.com/images/I/419GG1WTVJL._SX210_.jpg",
-                "l'eau rouge": "https://www.babelio.com/couv/CVT_Leau-rouge_7448.jpg",
-                "garçons de cristal": "https://www.babelio.com/couv/CVT_Garcons-de-cristal_2812.jpg",
-                "coeur de feu : j'étais une enfant soldat": "https://images-na.ssl-images-amazon.com/images/I/51M%2BYR6MllL._SX210_.jpg",
-                "après la pluie le beau temps": "https://www.babelio.com/couv/CVT_Apres-la-pluie-le-beau-temps_3734.jpg",
-                "un père pour mes rêves": "https://images-na.ssl-images-amazon.com/images/I/41BEovviEoL._SX210_.jpg",
-                "les matins de jénine": "https://www.babelio.com/couv/CVT_cvt_Les-matins-de-Jenine_9966.jpg",
-                "le chemin parcouru": "https://m.media-amazon.com/images/I/517IhhZEheL._SX195_.jpg",
-                "a long way gone": "https://m.media-amazon.com/images/I/517IhhZEheL._SX195_.jpg",
-                "noeuds": "https://covers.openlibrary.org/b/isbn/9780143112983-L.jpg",
-                "les jardins de cannelle": "https://covers.openlibrary.org/b/isbn/9782221089804-L.jpg",
-                "bel abîme": "https://www.babelio.com/couv/CVT_Bel-abime_8284.jpg",
-                "femme interdite": "https://covers.openlibrary.org/b/isbn/9782867467561-L.jpg",
-                "the cry of the dove": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1328822603i/868537.jpg",
-                "le cri de la colombe": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1328822603i/868537.jpg",
-                "the three body problem": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1415428227i/20518872.jpg",
-                "le monde des hommes": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1539207584i/42273846.jpg",
-                "la première femme": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1709908666i/203309474.jpg",
-                "un morceau de ciel sur terre": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1634568960i/57615696.jpg",
-                "many lives": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1347389428i/665788.jpg",
-                "follow the rabbit-proof fence": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1699125301i/1074300.jpg",
-                "la sorcière d'os": "https://m.media-amazon.com/images/I/41XR2MnpeFL._SX195_.jpg",
-                "la sorcière à la jambe d'os": "https://m.media-amazon.com/images/I/41XR2MnpeFL._SX195_.jpg",
-                "une île au loin": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1649342868i/60767553.jpg",
-                "la trêve": "https://www.babelio.com/couv/CVT_La-Treve_3280.jpg",
-                "une odyssée birmane": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1517102450i/38220867.jpg",
-                "weeding the flowerbeds": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1349067284i/7091840.jpg",
-                "the president": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1565038089i/73723.jpg",
-                "fils d'homme": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1644950517i/60424377.jpg",
-                "prophet song": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1689541792i/158875813.jpg",
-                "meursault contre-enquête": "https://www.babelio.com/couv/CVT_CVT_Meursault-contre-enquete_1459.jpg",
-                "rouge impératrice": "https://www.babelio.com/couv/CVT_Rouge-imperatrice_7806.jpg",
-                "anne of green gables": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1615094578i/8127.jpg",
-                "anne of avonlea": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1764879073i/77390.jpg",
-                "anne of the island": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1679457783i/123280461.jpg",
-                "anne's house of dreams": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1442471048i/77394.jpg",
-                "anne of ingleside": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1285712495i/77391.jpg",
-                "la montagne de l'âme": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1647536938i/2735103.jpg",
-                "10 minutes et 38 secondes dans ce monde étrange": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1579377624i/50535648.jpg",
-                "qimmik": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1696674090i/199308548.jpg",
-                "gouverneurs de la rosée": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1594343387i/54457611.jpg",
-                "guillaume et natalie": "https://www.babelio.com/couv/CVT_cvt_Guillaume-et-Nathalie_6964.jpg",
-                "ave maria": "https://images-eu.ssl-images-amazon.com/images/I/41S89n490yL._SX195_.jpg",
-                "dispersés": "https://images-na.ssl-images-amazon.com/images/I/31%2BJ6b-a8sL._SX210_.jpg",
-                "la papeterie tsubaki": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1766191562i/40671013.jpg",
-                "bleu nuit": "https://www.babelio.com/couv/CVT_Bleu-nuit_12.jpg",
-                "le jardin des brumes du soir": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1464554678i/30314997.jpg",
-                "the house of doors": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1698331937i/65215270.jpg",
-                "le dernier frère": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1427810682i/2117265.jpg",
-                "les vaisseaux frères": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1509028282i/36480877.jpg",
-                "l'hibiscus pourpre": "https://www.babelio.com/couv/CVT_Lhibiscus-pourpre_1178.jpg",
-                "l’autre moitié du soleil": "https://www.babelio.com/couv/CVT_cvt_Lautre-moitie-du-soleil_8159.jpg",
-                "notes sur le chagrin": "https://www.babelio.com/couv/CVT_Notes-sur-le-chagrin_6640.jpg",
-                "americanah": "https://www.babelio.com/couv/CVT_Americanah_1301.jpg",
-                "le dernier vœu": "https://www.babelio.com/couv/CVT_Le-Sorceleur-tome-1--Le-Dernier-Voeu-reedition_2699.jpg",
-                "celles qui attendent": "https://www.babelio.com/couv/CVT_Celles-qui-attendent_1998.jpg",
-                "les veilleurs de sangomar": "https://www.babelio.com/couv/CVT_Les-veilleurs-de-Sangomar_3376.jpg",
-                "une si longue lettre": "https://www.babelio.com/couv/CVT_Une-si-longue-lettre_3781.jpg",
-                "le jeu de l'ange": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327669415i/6642699.jpg",
-                "stöld": "https://www.babelio.com/couv/CVT_Stld_8988.jpg",
-                "straff": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1674497530i/63053281.jpg",
-                "près de la mer": "https://www.babelio.com/couv/CVT_Pres-de-la-mer_1924.jpg",
-                "paradis": "https://www.babelio.com/couv/CVT_Paradis_8258.jpg",
-                "l'assassin royal": "https://www.babelio.com/couv/CVT_15529_834672.jpg",
-                "le vieil homme et la mer": "https://www.babelio.com/couv/CVT_Le-vieil-homme-et-la-mer_1592.jpg",
-                "beloved": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1632283781i/6149.jpg",
-                "terre des oublis": "https://www.babelio.com/couv/CVT_13487_724458.jpg",
-                "les paradis aveugles": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1396368049i/21817982.jpg",
-                "une vie de choix": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1508183488i/10784478.jpg",
-                "les vies de papier": "https://www.babelio.com/couv/CVT_Les-vies-de-parpier_7177.jpg",
-                "métaphysique des tubes": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1337079993i/75519.jpg",
-                "tropique de la violence": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1470999182i/31431710.jpg",
-                "les désorientés": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1369837397i/16034631.jpg",
-                "seul dans berlin": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1369153160i/1541034.jpg",
-                "autobiographie de ma mère": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1514398366i/37751629.jpg",
-                "karnak café": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1320467205i/3118639.jpg",
-                "mon bel oranger": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1420543552i/24319911.jpg"
-            };
 
             const bookSummaries = {
                 // --- Déjà ajoutés ---
