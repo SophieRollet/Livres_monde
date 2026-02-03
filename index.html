@@ -581,12 +581,12 @@
         </div>
         <div id="map-view-container" style="display:none; width: 100%; height: 600px; gap: 20px;">
             <div id="map-container"
-                style="height: 100%; flex: 1.5; border-radius: var(--card-radius); box-shadow: var(--card-shadow); z-index: 1;">
+                style="height: 100%; flex: 3; border-radius: var(--card-radius); box-shadow: var(--card-shadow); z-index: 1;">
             </div>
             <div id="side-panel"
                 style="flex: 1; display: none; flex-direction: column; overflow-y: auto; background: var(--card-bg); border-radius: var(--card-radius); box-shadow: var(--card-shadow); padding: 20px; max-height: 600px;">
                 <h3 id="side-panel-title"
-                    style="font-family: 'Playfair Display', serif; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                    style="font-family: 'Lato', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; display: flex; align-items: center; gap: 10px;">
                     Pays</h3>
                 <div id="side-panel-content" class="side-panel-list"></div>
             </div>
@@ -1348,8 +1348,8 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             }
 
             title.innerHTML = `
+                ${getFlagUrl(data.name) ? `<img src="${getFlagUrl(data.name)}" style="height:24px; vertical-align:middle; margin-right:10px;">` : ''}
                 ${data.name} 
-                ${getFlagUrl(data.name) ? `<img src="${getFlagUrl(data.name)}" style="height:20px; vertical-align:middle; margin-left:10px;">` : ''}
             `;
 
             if (data.books.length === 0) {
@@ -1373,7 +1373,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             const coverUrl = getCoverUrlForBook(book);
             return `
                 <div style="display: flex; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
-                    ${coverUrl ? `<img src="${coverUrl}" style="width: 60px; height: 90px; object-fit: cover; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">` : ''}
+                    ${coverUrl ? `<img src="${coverUrl}" style="width: 100px; height: 150px; object-fit: cover; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">` : ''}
                     <div>
                         <div style="font-weight: bold; font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-primary);">${book.title}</div>
                         <div style="font-style: italic; font-size: 0.9rem; color: #666; margin-top: 5px;">${book.author}</div>
@@ -1485,7 +1485,8 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             "seul dans berlin": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1369153160i/1541034.jpg",
             "autobiographie de ma mère": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1514398366i/37751629.jpg",
             "karnak café": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1320467205i/3118639.jpg",
-            "mon bel oranger": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1420543552i/24319911.jpg"
+            "mon bel oranger": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1420543552i/24319911.jpg",
+            "le rêve du village des ding": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1454783078i/28948175.jpg"
         };
         // Helper to extract cover URL logic from getBookHtml
         function getCoverUrlForBook(book) {
@@ -1516,7 +1517,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
 
         function updateCounter(books) {
             const uniqueCountries = new Set(books.map(b => b.country));
-            const count = uniqueCountries.size;
+            let count = uniqueCountries.size;
             const bookCount = books.length;
             const counterElement = document.getElementById('counter');
             const totalCountries = 196;
