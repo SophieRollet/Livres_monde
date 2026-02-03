@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,30 @@
     <!-- Polices Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <style>
         :root {
             --bg-color: #fdfbf7;
             --card-bg: #ffffff;
             --text-primary: #2c3e50;
             --text-secondary: #7f8c8d;
-            --accent-read: #e67e22; /* Orange pour Lus */
-            --accent-toread: #3498db; /* Bleu pour À lire */
-            --accent-waiting: #95a5a6; /* Gris pour En attente */
-            --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            --accent-read: #e67e22;
+            /* Orange pour Lus */
+            --accent-toread: #3498db;
+            /* Bleu pour À lire */
+            --accent-waiting: #95a5a6;
+            /* Gris pour En attente */
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             --card-radius: 12px;
+            --accent-map: #8e44ad;
+            /* Violet pour la carte */
         }
 
         * {
@@ -64,9 +76,9 @@
             background: white;
             padding: 10px 25px;
             border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .counter-number {
@@ -75,11 +87,19 @@
             font-weight: 700;
             margin-right: 8px;
         }
-        
+
         /* Couleur dynamique du compteur selon l'onglet */
-        .counter-number.read-mode { color: var(--accent-read); }
-        .counter-number.toread-mode { color: var(--accent-toread); }
-        .counter-number.waiting-mode { color: var(--accent-waiting); }
+        .counter-number.read-mode {
+            color: var(--accent-read);
+        }
+
+        .counter-number.toread-mode {
+            color: var(--accent-toread);
+        }
+
+        .counter-number.waiting-mode {
+            color: var(--accent-waiting);
+        }
 
         .counter-text {
             font-size: 0.95rem;
@@ -133,8 +153,19 @@
             box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
         }
 
+        .tab-btn.active.map {
+            background-color: var(--accent-map);
+            color: white;
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+        }
+
+        .custom-div-icon {
+            background: transparent;
+            border: none;
+        }
+
         .tab-btn:hover:not(.active) {
-            background-color: rgba(0,0,0,0.05);
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         .search-container {
@@ -151,7 +182,7 @@
             border: 1px solid #ddd;
             border-radius: 30px;
             background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             outline: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
@@ -160,7 +191,7 @@
         }
 
         #searchInput:focus {
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             border-color: var(--accent-read);
         }
 
@@ -185,9 +216,10 @@
             flex-direction: row;
             align-items: flex-start;
             gap: 20px;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0, 0, 0, 0.03);
             position: relative;
-            height: 270px; /* Hauteur fixe maintenue */
+            height: 270px;
+            /* Hauteur fixe maintenue */
             cursor: pointer;
         }
 
@@ -209,36 +241,46 @@
         /* Et on fait défiler uniquement la zone de contenu (slides) */
         .slides-wrapper {
             overflow-y: auto;
-            scrollbar-width: thin; /* Pour Firefox */
+            scrollbar-width: thin;
+            /* Pour Firefox */
         }
-        
+
         /* Styles de la barre de défilement pour Chrome/Safari/Edge */
         .card:not(.carousel-card)::-webkit-scrollbar,
         .slides-wrapper::-webkit-scrollbar {
             width: 6px;
         }
+
         .card:not(.carousel-card)::-webkit-scrollbar-track,
         .slides-wrapper::-webkit-scrollbar-track {
             background: transparent;
         }
+
         .card:not(.carousel-card)::-webkit-scrollbar-thumb,
         .slides-wrapper::-webkit-scrollbar-thumb {
-            background-color: rgba(0,0,0,0.1);
+            background-color: rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
 
         .book-summary {
-            display: none; /* Hidden by default */
+            display: none;
+            /* Hidden by default */
         }
 
         .card.expanded .book-summary {
-            display: block; /* Visible when expanded */
+            display: block;
+            /* Visible when expanded */
             animation: fadeIn 0.5s;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .book-cover {
@@ -246,14 +288,15 @@
             height: 150px;
             object-fit: cover;
             border-radius: 6px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
             background-color: #f0f0f0;
         }
 
         .book-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem; /* Slightly smaller to fit better */
+            font-size: 1.1rem;
+            /* Slightly smaller to fit better */
             font-weight: 700;
             margin-bottom: 5px;
             color: var(--text-primary);
@@ -270,7 +313,8 @@
             color: #666;
             border-top: 1px solid #f0f0f0;
             padding-top: 10px;
-            margin-top: auto; /* Push author to the bottom */
+            margin-top: auto;
+            /* Push author to the bottom */
             font-style: italic;
             white-space: nowrap;
             overflow: hidden;
@@ -288,7 +332,7 @@
             width: 20px;
             height: auto;
             border-radius: 2px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
         }
 
@@ -319,18 +363,18 @@
             background: white;
             padding: 15px 20px;
             border-radius: 50px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
             display: flex;
             align-items: center;
             gap: 15px;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.2s ease;
             cursor: default;
         }
 
         .country-chip:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             border-color: var(--accent-waiting);
         }
 
@@ -338,7 +382,7 @@
             width: 28px;
             height: auto;
             border-radius: 3px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .country-chip .country-name {
@@ -351,10 +395,23 @@
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .grid { grid-template-columns: 1fr; }
-            .tabs-container { flex-direction: column; align-items: center; }
-            .tab-btn { width: 100%; max-width: 300px; }
+            h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+            }
         }
 
         /* Dark Mode Styles */
@@ -363,7 +420,7 @@
             --card-bg: #2c2c2c;
             --text-primary: #e0e0e0;
             --text-secondary: #a0a0a0;
-            --card-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         body.dark-mode .counter-wrapper,
@@ -373,9 +430,9 @@
             border-color: #444;
             color: #e0e0e0;
         }
-        
+
         body.dark-mode .tab-btn:hover:not(.active) {
-             background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         body.dark-mode .author {
@@ -436,11 +493,11 @@
             border-radius: 50%;
         }
 
-        input:checked + .slider {
+        input:checked+.slider {
             background-color: var(--accent-read);
         }
 
-        input:checked + .slider:before {
+        input:checked+.slider:before {
             transform: translateX(24px);
         }
 
@@ -448,7 +505,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-read); /* Orange */
+            color: var(--accent-read);
+            /* Orange */
             cursor: pointer;
         }
 
@@ -459,7 +517,8 @@
 
         /* Styles Coup de coeur */
         .card.favorite {
-            border: 2px solid #ff80ab; /* Rose */
+            border: 2px solid #ff80ab;
+            /* Rose */
         }
 
         .heart-icon {
@@ -468,17 +527,20 @@
             right: 15px;
             font-size: 1.5rem;
             z-index: 5;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
             line-height: 1;
         }
     </style>
 </head>
+
 <body>
     <div class="theme-switch-wrapper">
         <span class="mode-label">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                <path
+                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
             </svg>
         </span>
         <label class="theme-switch" for="checkbox">
@@ -486,7 +548,8 @@
             <div class="slider"></div>
         </label>
         <span class="mode-label">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
         </span>
@@ -495,7 +558,7 @@
     <header>
         <h1>Bibliothèque du Monde</h1>
         <p class="subtitle">Un voyage littéraire</p>
-        
+
         <div id="counter" class="counter-wrapper">
             <!-- Compteur inséré par JS -->
         </div>
@@ -504,6 +567,7 @@
             <button class="tab-btn active read" onclick="switchTab('read')">Livres Lus</button>
             <button class="tab-btn toread" onclick="switchTab('toread')">Livres à lire</button>
             <button class="tab-btn waiting" onclick="switchTab('waiting')">En attente</button>
+            <button class="tab-btn map" onclick="switchTab('map')">Carte du Monde</button>
         </div>
 
         <div class="search-container">
@@ -515,9 +579,18 @@
         <div id="book-grid" class="grid">
             <!-- Les livres seront insérés ici par JS -->
         </div>
+        <div id="map-container"
+            style="display:none; height: 600px; width: 100%; border-radius: var(--card-radius); box-shadow: var(--card-shadow); z-index: 1;">
+        </div>
     </div>
 
     <script>
+        // Error handler to debug "blank page" issues
+        window.onerror = function (msg, url, line, col, error) {
+            console.error(msg, line, col, error);
+            // alert("Une erreur est survenue: " + msg + "\nLigne: " + line); // Uncomment for aggressive debugging
+        };
+
         // Mapping des pays vers Code ISO (2 lettres)
         const countryCodes = {
             "Afghanistan": "af", "Afrique du Sud": "za", "Albanie": "al", "Algérie": "dz", "Allemagne": "de",
@@ -558,6 +631,68 @@
             "Trinité-et-Tobago": "tt", "Tunisie": "tn", "Turkménistan": "tm", "Turquie": "tr", "Tuvalu": "tv",
             "Ukraine": "ua", "Uruguay": "uy", "Vanuatu": "vu", "Vatican": "va", "Venezuela": "ve", "Viêt Nam": "vn",
             "Yémen": "ye", "Zambie": "zm", "Zimbabwe": "zw", "Taïwan": "tw"
+        };
+
+        const countryCoords = {
+            "AF": [33.9391, 67.71], "AL": [41.1533, 20.1683], "DZ": [28.0339, 1.6596], "AS": [-14.271, -170.1322],
+            "AD": [42.5462, 1.6016], "AO": [-11.2027, 17.8739], "AI": [18.2206, -63.0686], "AQ": [-75.251, -0.0713],
+            "AG": [17.0608, -61.7964], "AR": [-38.4161, -63.6167], "AM": [40.0691, 45.0382], "AW": [12.5211, -69.9683],
+            "AU": [-25.2744, 133.7751], "AT": [47.5162, 14.5501], "AZ": [40.1431, 47.5769], "BS": [25.0343, -77.3963],
+            "BH": [25.9304, 50.6378], "BD": [23.685, 90.3563], "BB": [13.1939, -59.5432], "BY": [53.7098, 27.9534],
+            "BE": [50.5039, 4.4699], "BZ": [17.1899, -88.4976], "BJ": [9.3077, 2.3158], "BM": [32.3214, -64.7573],
+            "BT": [27.5142, 90.4336], "BO": [-16.2902, -63.5887], "BA": [43.9159, 17.6791], "BW": [-22.3285, 24.6849],
+            "BR": [-14.235, -51.9253], "BN": [4.5353, 114.7277], "BG": [42.7339, 25.4858], "BF": [12.2383, -1.5616],
+            "BI": [-3.3731, 29.9189], "KH": [12.5657, 104.991], "CM": [7.3697, 12.3547], "CA": [56.1304, -106.3468],
+            "CV": [16.002, -24.0131], "KY": [19.5135, -80.5669], "CF": [6.6111, 20.9394], "TD": [15.4542, 18.7322],
+            "CL": [-35.6751, -71.543], "CN": [35.8617, 104.1954], "CX": [-10.4475, 105.6904], "CC": [-12.1642, 96.871],
+            "CO": [4.5709, -74.2973], "KM": [-11.6455, 43.3333], "CG": [-0.228, 15.8277], "CD": [-4.0383, 21.7587],
+            "CK": [-21.2367, -159.7777], "CR": [9.7489, -83.7534], "CI": [7.54, -5.5471], "HR": [45.1, 15.2],
+            "CU": [21.5218, -77.7812], "CY": [35.1264, 33.4299], "CZ": [49.8175, 15.473], "DK": [56.2639, 9.5018],
+            "DJ": [11.8251, 42.5903], "DM": [15.415, -61.371], "DO": [18.7357, -70.1627], "EC": [-1.8312, -78.1834],
+            "EG": [26.8206, 30.8025], "SV": [13.7942, -88.8965], "GQ": [1.6508, 10.2679], "ER": [15.1794, 39.7823],
+            "EE": [58.5953, 25.0136], "ET": [9.145, 40.4897], "FK": [-51.7963, -59.5236], "FO": [61.8926, -6.9118],
+            "FJ": [-17.7134, 178.065], "FI": [61.9241, 25.7482], "FR": [46.2276, 2.2137], "GF": [3.9339, -53.1258],
+            "PF": [-17.6797, -149.4068], "GA": [-0.8037, 11.6094], "GM": [13.4432, -15.3101], "GE": [42.3154, 43.3569],
+            "DE": [51.1657, 10.4515], "GH": [7.9465, -1.0232], "GI": [36.1408, -5.3536], "GR": [39.0742, 21.8243],
+            "GL": [71.7069, -42.6043], "GD": [12.1165, -61.679], "GP": [16.996, -62.0673], "GU": [13.4443, 144.7937],
+            "GT": [15.7835, -90.2308], "GN": [9.9456, -9.6966], "GW": [11.8037, -15.1804], "GY": [4.8604, -58.9302],
+            "HT": [18.9712, -72.2852], "VA": [41.9029, 12.4534], "HN": [15.1999, -86.2419], "HK": [22.3964, 114.1095],
+            "HU": [47.1625, 19.5033], "IS": [64.9631, -19.0208], "IN": [20.5937, 78.9629], "ID": [-0.7893, 113.9213],
+            "IR": [32.4279, 53.688], "IQ": [33.2232, 43.6793], "IE": [53.4129, -8.2439], "IL": [31.0461, 34.8516],
+            "IT": [41.8719, 12.5674], "JM": [18.1096, -77.2975], "JP": [36.2048, 138.2529], "JO": [30.5852, 36.2384],
+            "KZ": [48.0196, 66.9237], "KE": [-0.0236, 37.9062], "KI": [-3.3704, -168.734], "KP": [40.3399, 127.5101],
+            "KR": [35.9078, 127.7669], "KW": [29.3117, 47.4818], "KG": [41.2044, 74.7661], "LA": [19.8563, 102.4955],
+            "LV": [56.8796, 24.6032], "LB": [33.8547, 35.8623], "LS": [-29.61, 28.2336], "LR": [6.4281, -9.4295],
+            "LY": [26.3351, 17.2283], "LI": [47.166, 9.5554], "LT": [55.1694, 23.8813], "LU": [49.8153, 6.1296],
+            "MO": [22.1987, 113.5439], "MK": [41.6086, 21.7453], "MG": [-18.7669, 46.8691], "MW": [-13.2543, 34.3015],
+            "MY": [4.1406, 101.9758], "MV": [3.2028, 73.2207], "ML": [17.5707, -3.9962], "MT": [35.9375, 14.3754],
+            "MH": [7.1315, 171.1845], "MQ": [14.6415, -61.0242], "MR": [21.0079, -10.9408], "MU": [-20.3484, 57.5522],
+            "YT": [-12.8275, 45.1662], "MX": [23.6345, -102.5528], "FM": [7.4256, 150.5508], "MD": [47.4116, 28.3699],
+            "MC": [43.7384, 7.4246], "MN": [46.8625, 103.8467], "ME": [42.7087, 19.3744], "MS": [16.7425, -62.1874],
+            "MA": [31.7917, -7.0926], "MZ": [-18.6657, 35.5296], "MM": [21.9162, 95.956], "NA": [-22.9576, 18.4904],
+            "NR": [-0.5228, 166.9315], "NP": [28.3949, 84.124], "NL": [52.1326, 5.2913], "AN": [12.2261, -69.0601],
+            "NC": [-20.9043, 165.618], "NZ": [-40.9006, 174.886], "NI": [12.8654, -85.2072], "NE": [17.6078, 8.0817],
+            "NG": [9.082, 8.6753], "NU": [-19.0544, -169.8672], "NF": [-29.0408, 167.9547], "MP": [15.0979, 145.6739],
+            "NO": [60.472, 8.4689], "OM": [21.4735, 55.9754], "PK": [30.3753, 69.3451], "PW": [7.515, 134.5825],
+            "PS": [31.9522, 35.2332], "PA": [8.538, -80.7821], "PG": [-6.315, 143.9555], "PY": [-23.4425, -58.4438],
+            "PE": [-9.19, -75.0152], "PH": [12.8797, 121.774], "PN": [-24.7036, -127.4393], "PL": [51.9194, 19.1451],
+            "PT": [39.3999, -8.2245], "PR": [18.2208, -66.5901], "QA": [25.3548, 51.1839], "RE": [-21.1151, 55.5364],
+            "RO": [45.9432, 24.9668], "RU": [61.524, 105.3188], "RW": [-1.9403, 29.8739], "SH": [-24.1435, -10.028],
+            "KN": [17.3578, -62.783], "LC": [13.9094, -60.9789], "PM": [46.9419, -56.2711], "VC": [12.9843, -61.2872],
+            "WS": [-13.759, -172.1046], "SM": [43.9424, 12.4578], "ST": [0.1864, 6.6131], "SA": [23.8859, 45.0792],
+            "SN": [14.4974, -14.4524], "RS": [44.0165, 21.0059], "SC": [-4.6796, 55.492], "SL": [8.4606, -11.7799],
+            "SG": [1.3521, 103.8198], "SK": [48.669, 19.699], "SI": [46.1512, 14.9955], "SB": [-9.6457, 160.1562],
+            "SO": [5.1521, 46.1996], "ZA": [-30.5595, 22.9375], "GS": [-54.4296, -36.5879], "ES": [40.4637, -3.7492],
+            "LK": [7.8731, 80.7718], "SD": [12.8628, 30.2176], "SR": [3.9193, -56.0278], "SJ": [77.5536, 23.6703],
+            "SZ": [-26.5225, 31.4659], "SE": [60.1282, 18.6435], "CH": [46.8182, 8.2275], "SY": [34.8021, 38.9968],
+            "TW": [23.6978, 120.9605], "TJ": [38.861, 71.2761], "TZ": [-6.369, 34.8888], "TH": [15.87, 100.9925],
+            "TL": [-8.8742, 125.7275], "TG": [8.6195, 0.8248], "TK": [-9.2002, -171.8484], "TO": [-21.179, -175.1982],
+            "TT": [10.6918, -61.2225], "TN": [33.8869, 9.5375], "TR": [38.9637, 35.2433], "TM": [38.9697, 59.5563],
+            "TC": [21.694, -71.7979], "TV": [-7.1095, 177.6493], "UG": [1.3733, 32.2903], "UA": [48.3794, 31.1656],
+            "AE": [23.4241, 53.8478], "GB": [55.3781, -3.436], "US": [37.0902, -95.7129], "UM": [19.3, -166.6],
+            "UY": [-32.5228, -55.7658], "UZ": [41.3775, 64.5853], "VU": [-15.3767, 166.9592], "VE": [6.4238, -66.5897],
+            "VN": [14.0583, 108.2772], "VG": [18.4207, -64.64], "VI": [18.3358, -64.8963], "WF": [-13.7687, -177.1561],
+            "EH": [24.2155, -12.8858], "YE": [15.5527, 48.5164], "ZM": [-13.1339, 27.8493], "ZW": [-19.0154, 29.1549]
         };
 
         // --- DONNÉES LIVRES LUS (Corrigées pour atteindre 96) ---
@@ -931,27 +1066,27 @@ Indonesia,ID,Pramoedya Ananta Toer,"Gadis Pantai, la fille du rivage",https://m.
 Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1718940504i/211082910.jpg,https://www.goodreads.com/book/show/211082910-histoire-d-une-domestication,To read`;
 
         function parseCoverCSV(text) {
-             const lines = text.split('\n');
-             const coverMap = {};
-             // Regex to split by comma but ignore commas inside quotes
-             const splitRegex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
-             
-             for (let i = 1; i < lines.length; i++) {
-                 let line = lines[i].trim();
-                 if (!line) continue;
-                 const parts = line.split(splitRegex);
-                 if (parts.length >= 5) {
-                     // Title is index 3, Cover is index 4
-                     let title = parts[3].trim().replace(/^"|"$/g, '').toLowerCase().replace(/’/g, "'"); 
-                     let cover = parts[4].trim().replace(/^"|"$/g, '');
-                     if (title && cover && cover.startsWith('http')) {
-                         coverMap[title] = cover;
-                     }
-                 }
-             }
-             return coverMap;
+            const lines = text.split('\n');
+            const coverMap = {};
+            // Regex to split by comma but ignore commas inside quotes
+            const splitRegex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
+
+            for (let i = 1; i < lines.length; i++) {
+                let line = lines[i].trim();
+                if (!line) continue;
+                const parts = line.split(splitRegex);
+                if (parts.length >= 5) {
+                    // Title is index 3, Cover is index 4
+                    let title = parts[3].trim().replace(/^"|"$/g, '').toLowerCase().replace(/’/g, "'");
+                    let cover = parts[4].trim().replace(/^"|"$/g, '');
+                    if (title && cover && cover.startsWith('http')) {
+                        coverMap[title] = cover;
+                    }
+                }
+            }
+            return coverMap;
         }
-        
+
         const coverMap = parseCoverCSV(rawCsvDataCovers);
 
         let currentTab = 'read';
@@ -963,10 +1098,10 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             // Regex to split by comma but ignore commas inside quotes
             const splitRegex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
 
-            for (let i = 1; i < lines.length; i++) { 
+            for (let i = 1; i < lines.length; i++) {
                 let line = lines[i].trim();
                 if (!line) continue;
-                
+
                 const parts = line.split(splitRegex);
 
                 if (parts.length >= 3) {
@@ -974,7 +1109,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
                     const author = parts[1].trim();
                     // Remove quotes from title if present
                     const title = parts[2].trim().replace(/^"|"$/g, '');
-                    
+
                     if (title && title !== "") {
                         result.push({ country, author, title });
                     }
@@ -988,6 +1123,128 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             return code ? `https://flagcdn.com/w40/${code}.png` : null;
         }
 
+        let map = null;
+        let markers = [];
+
+        function initMap() {
+            if (map) return;
+
+            if (typeof L === 'undefined') {
+                console.error("Leaflet (L) n'est pas chargé.");
+                document.getElementById('map-container').innerHTML = '<div style="padding:20px; text-align:center;">Erreur: Carte indisponible (Leaflet non chargé). Vérifiez votre connexion.</div>';
+                return;
+            }
+
+            try {
+                map = L.map('map-container').setView([20, 0], 2);
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                    subdomains: 'abcd',
+                    maxZoom: 19
+                }).addTo(map);
+
+                updateMapMarkers();
+            } catch (e) {
+                console.error("Erreur initMap:", e);
+            }
+        }
+
+        function updateMapMarkers() {
+            if (!map) return;
+
+            // Clear existing markers
+            markers.forEach(m => map.removeLayer(m));
+            markers = [];
+
+            // Compile all data into a map: Country -> { status, books }
+            // Status priority: Read > ToRead > Waiting
+            const countryStatus = {};
+
+            // Helper to process lists
+            const processList = (list, type) => {
+                list.forEach(book => {
+                    const c = book.country;
+                    if (!countryStatus[c]) {
+                        countryStatus[c] = { status: type, books: [] };
+                    }
+                    // Upgrade status if needed
+                    if (type === 'read') countryStatus[c].status = 'read';
+                    else if (type === 'toread' && countryStatus[c].status === 'waiting') countryStatus[c].status = 'toread';
+
+                    if (book.title !== "En attente de recommandation") {
+                        countryStatus[c].books.push({ title: book.title, author: book.author, type: type });
+                    }
+                });
+            };
+
+            processList(booksData.waiting, 'waiting'); // Process waiting first (lowest priority)
+            processList(booksData.toread, 'toread');
+            processList(booksData.read, 'read');
+
+            // Define colors
+            const colors = {
+                'read': '#e67e22',   // Orange
+                'toread': '#3498db', // Bleu
+                'waiting': '#95a5a6'  // Gris
+            };
+
+            Object.keys(countryStatus).forEach(country => {
+                const code = countryCodes[country] ? countryCodes[country].toUpperCase() : null;
+                const coords = code ? countryCoords[code] : null;
+
+                if (coords) {
+                    const data = countryStatus[country];
+                    const color = colors[data.status];
+
+                    const markerHtml = `
+                        <div style="
+                            background-color: ${color};
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            border: 2px solid white;
+                            box-shadow: 0 0 4px rgba(0,0,0,0.3);
+                        "></div>
+                    `;
+
+                    const icon = L.divIcon({
+                        className: 'custom-div-icon',
+                        html: markerHtml,
+                        iconSize: [16, 16],
+                        iconAnchor: [8, 8]
+                    });
+
+                    const marker = L.marker(coords, { icon: icon }).addTo(map);
+
+                    // Popup Content
+                    let popupContent = `<div style="font-family: 'Lato', sans-serif;">
+                        <h3 style="margin: 0 0 5px 0; font-family: 'Playfair Display', serif;">
+                            ${country} 
+                            ${getFlagUrl(country) ? `<img src="${getFlagUrl(country)}" style="height:12px; vertical-align:middle;">` : ''}
+                        </h3>`;
+
+                    if (data.books.length > 0) {
+                        popupContent += `<ul style="padding-left: 15px; margin: 5px 0 0 0; font-size: 0.85rem;">`;
+                        data.books.forEach(b => {
+                            let itemColor = colors[b.type];
+                            popupContent += `<li style="color: ${itemColor}; margin-bottom: 2px;">
+                                ${b.title} <span style="color: #999; font-size: 0.75rem;">(${b.author})</span>
+                             </li>`;
+                        });
+                        popupContent += `</ul>`;
+                    } else {
+                        popupContent += `<div style="font-size: 0.8rem; font-style: italic; color: #7f8c8d;">En attente de lecture...</div>`;
+                    }
+                    popupContent += `</div>`;
+
+                    marker.bindPopup(popupContent);
+                    markers.push(marker);
+                }
+            });
+        }
+
+
         function updateCounter(books) {
             const uniqueCountries = new Set(books.map(b => b.country));
             const count = uniqueCountries.size;
@@ -995,16 +1252,27 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             const counterElement = document.getElementById('counter');
             const totalCountries = 196;
             const percentage = Math.round((count / totalCountries) * 100);
-            
+
             let label = '';
             let colorClass = '';
-            
+
             if (currentTab === 'read') {
                 label = 'pays lus';
                 colorClass = 'read-mode';
             } else if (currentTab === 'toread') {
                 label = 'pays à lire';
                 colorClass = 'toread-mode';
+            } else if (currentTab === 'map') {
+                label = 'pays couverts';
+                colorClass = 'waiting-mode'; // Ou une couleur spécifique
+                // Calculer le total réel pour la carte (union de tous les pays)
+                const allMappedCountries = new Set([
+                    ...booksData.read.map(b => b.country),
+                    ...booksData.toread.map(b => b.country),
+                    ...booksData.waiting.map(b => b.country)
+                ]);
+                // Override count pour le mode map
+                count = allMappedCountries.size; // Devrait être 196
             } else {
                 label = 'pays en attente';
                 colorClass = 'waiting-mode';
@@ -1012,7 +1280,10 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
 
             let bookCountHtml = '';
             if (currentTab === 'read' || currentTab === 'toread') {
-                 bookCountHtml = `<span class="counter-text" style="margin-left: 5px;">/ ${bookCount} livres</span>`;
+                bookCountHtml = `<span class="counter-text" style="margin-left: 5px;">/ ${bookCount} livres</span>`;
+            } else if (currentTab === 'map') {
+                // Pas de décompte de livres spécifique sur la vue globale
+                bookCountHtml = '';
             }
 
             counterElement.innerHTML = `
@@ -1024,8 +1295,26 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
 
         function renderBooks(booksToRender) {
             const grid = document.getElementById('book-grid');
-            updateCounter(booksToRender);
-            
+            const mapContainer = document.getElementById('map-container');
+
+            if (currentTab === 'map') {
+                mapContainer.style.display = 'block';
+                grid.style.display = 'none';
+                setTimeout(() => {
+                    if (map) map.invalidateSize();
+                }, 100);
+                initMap();
+                updateCounter([]);
+                return;
+            }
+
+            mapContainer.style.display = 'none';
+            grid.style.display = ''; // Reset display style
+
+            if (booksToRender) {
+                updateCounter(booksToRender);
+            }
+
             if (!booksToRender || booksToRender.length === 0) {
                 grid.className = 'grid';
                 grid.innerHTML = '<div class="empty-state">Aucun résultat trouvé.</div>';
@@ -1049,7 +1338,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
 
             // --- VUE NORMALE (LIVRES) ---
             grid.className = 'grid'; // Rétablit la grille normale
-            
+
             // Group books by country
             const booksByCountry = {};
             booksToRender.forEach(book => {
@@ -1063,13 +1352,13 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             if (booksByCountry['Cuba']) {
                 booksByCountry['Cuba'].reverse();
             }
-            
+
             // Mapping for titles that differ between 'Read' list and 'Cover' DB
             const titleMapping = {
                 "girls of riyadh": "les filles de riyadh",
                 "the bleeding of the stone": "le saignement de la pierre",
                 "a brief history of seven killings": "brève histoire de sept meurtres",
-                "le dégoût": "le dégoût", 
+                "le dégoût": "le dégoût",
                 "knots": "noeuds",
                 "the cry of the dove": "le cri de la colombe",
                 "a long way gone": "le chemin parcouru",
@@ -1145,7 +1434,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
                 "l’autre moitié du soleil": "https://www.babelio.com/couv/CVT_cvt_Lautre-moitie-du-soleil_8159.jpg",
                 "notes sur le chagrin": "https://www.babelio.com/couv/CVT_Notes-sur-le-chagrin_6640.jpg",
                 "americanah": "https://www.babelio.com/couv/CVT_Americanah_1301.jpg",
-"le dernier vœu": "https://www.babelio.com/couv/CVT_Le-Sorceleur-tome-1--Le-Dernier-Voeu-reedition_2699.jpg",
+                "le dernier vœu": "https://www.babelio.com/couv/CVT_Le-Sorceleur-tome-1--Le-Dernier-Voeu-reedition_2699.jpg",
                 "celles qui attendent": "https://www.babelio.com/couv/CVT_Celles-qui-attendent_1998.jpg",
                 "les veilleurs de sangomar": "https://www.babelio.com/couv/CVT_Les-veilleurs-de-Sangomar_3376.jpg",
                 "une si longue lettre": "https://www.babelio.com/couv/CVT_Une-si-longue-lettre_3781.jpg",
@@ -1328,7 +1617,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
                 "garçons de cristal": "Taïpeh, années 70. Le roman plonge dans le monde souterrain des jeunes homosexuels qui se retrouvent au Nouveau Parc. Rejetés par leurs familles, ils forment une communauté unie par la quête d'amour et la marginalité, sous le regard d'une société confucéenne.",
                 "many lives": "Un bateau chavire en Thaïlande, tuant tous ses passagers. Le roman explore les vies antérieures et les karmas de plusieurs victimes : un moine, une prostituée, un prince, etc., montrant comment leurs actions passées les ont menés à ce destin commun.",
                 "le jeu de l'ange": "Barcelone, années 20. David Martin, un jeune écrivain talentueux mais tourmenté, reçoit une offre étrange d'un éditeur parisien mystérieux : écrire un livre pour créer une nouvelle religion. Une descente aux enfers gothique et fascinante.",
-                
+
                 // --- Livres "À lire" ---
                 "la faim": "Kristiania (Oslo), fin du 19e siècle. Un jeune écrivain famélique erre dans les rues, luttant pour garder sa dignité et sa raison malgré la faim qui le tenaille et lui provoque des hallucinations. Un récit psychologique intense sur la condition de l'artiste.",
                 "les corps célestes": "Dans le village d'al-Awafi à Oman, le roman suit la vie de trois sœurs et de leurs familles sur plusieurs générations. Il explore les transformations de la société omanaise, l'histoire de l'esclavage et les désirs secrets des femmes.",
@@ -1359,35 +1648,35 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             const favorites = ["Avril brisé", "Seul le grenadier", "Les matins de Jénine", "Les filles de Riyadh", "Les filles de Riyad", "Treize heures", "Mauvaises herbes", "Le don de la pluie", "Mon frère", "Allah n'est pas obligé", "Le roi fantôme"];
 
             const getBookHtml = (book, isHidden = false) => {
-                 const flagUrl = getFlagUrl(book.country);
+                const flagUrl = getFlagUrl(book.country);
                 const flagHtml = flagUrl ? `<img src="${flagUrl}" alt="${book.country}" class="flag-img">` : '';
-                
+
                 let normalizedTitle = book.title.trim().toLowerCase().replace(/’/g, "'");
-                
+
                 if (titleMapping[normalizedTitle]) {
                     normalizedTitle = titleMapping[normalizedTitle];
                 }
-                
-                let coverUrl = manualCovers[normalizedTitle] || manualCovers[book.title.trim().toLowerCase()]; 
-                
+
+                let coverUrl = manualCovers[normalizedTitle] || manualCovers[book.title.trim().toLowerCase()];
+
                 if (!coverUrl) {
                     coverUrl = coverMap[normalizedTitle];
                 }
-                
+
                 if (!coverUrl) {
                     const keys = Object.keys(coverMap);
                     const match = keys.find(k => k.includes(normalizedTitle) || (normalizedTitle.length > 5 && k.includes(normalizedTitle.substring(0, 10))));
                     if (match) coverUrl = coverMap[match];
                 }
 
-                const coverHtml = coverUrl 
-                    ? `<img src="${coverUrl}" alt="Couverture de ${book.title}" class="book-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` 
+                const coverHtml = coverUrl
+                    ? `<img src="${coverUrl}" alt="Couverture de ${book.title}" class="book-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
                     : '';
-                
+
                 const fallbackHtml = `<div class="book-cover" style="display:${coverUrl ? 'none' : 'flex'};align-items:center;justify-content:center;color:#ccc;font-size:0.8rem;text-align:center;padding:5px;background:#f9f9f9;">Pas d'image</div>`;
 
                 const style = isHidden ? 'display: none;' : 'display: flex;';
-                
+
                 // Favorite check
                 const isFavorite = favorites.includes(book.title);
                 const heartHtml = isFavorite ? '<div class="heart-icon" style="position: absolute; top: 10px; right: 10px; z-index: 10; font-size: 1.2rem;">❤️</div>' : '';
@@ -1415,10 +1704,10 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
                 `;
             };
 
-            window.toggleSummary = function(card) {
+            window.toggleSummary = function (card) {
                 // Prevent toggling if a carousel button was clicked
                 if (event && (event.target.tagName === 'BUTTON' || event.target.closest('button'))) return;
-                
+
                 card.classList.toggle('expanded');
             };
 
@@ -1431,15 +1720,15 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
                                 ${getBookHtml(book)}
                             </div>`;
                 }
-                
+
                 const slidesHtml = group.map((book, index) => getBookHtml(book, index !== 0)).join('');
-                
+
                 // Check if the FIRST book is a favorite to set initial state for the card border
                 const firstBookIsFavorite = favorites.includes(group[0].title);
                 const initialFavClass = firstBookIsFavorite ? ' favorite' : '';
-                
+
                 let accentColor = currentTab === 'read' ? 'var(--accent-read)' : 'var(--accent-toread)';
-                
+
                 return `
                 <div class="card ${cardClass} carousel-card${initialFavClass}" onclick="toggleSummary(this)">
                     <div class="carousel-container" style="width: 100%; position: relative; display: flex; flex-direction: column; height: 100%;">
@@ -1459,14 +1748,14 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             }).join('');
         }
 
-        window.changeSlide = function(btn, direction) {
+        window.changeSlide = function (btn, direction) {
             const container = btn.closest('.carousel-container');
             const slidesWrapper = container.querySelector('.slides-wrapper');
             const slides = slidesWrapper.querySelectorAll('.book-content-wrapper');
             const dots = container.querySelectorAll('.dot');
             const card = container.closest('.card');
             let activeIndex = -1;
-            
+
             slides.forEach((slide, index) => {
                 if (slide.style.display !== 'none') activeIndex = index;
             });
@@ -1503,8 +1792,8 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
         function filterBooks(searchTerm) {
             const normalize = (str) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
             const lowerTerm = normalize(searchTerm);
-            
-            const filtered = booksData[currentTab].filter(book => 
+
+            const filtered = booksData[currentTab].filter(book =>
                 normalize(book.country).includes(lowerTerm) ||
                 normalize(book.title).includes(lowerTerm) ||
                 normalize(book.author).includes(lowerTerm)
@@ -1518,7 +1807,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             document.querySelector(`.tab-btn.${tab}`).classList.add('active');
             const searchInput = document.getElementById('searchInput');
             searchInput.value = '';
-            
+
             if (tab === 'read') searchInput.style.borderColor = 'var(--accent-read)';
             else if (tab === 'toread') searchInput.style.borderColor = 'var(--accent-toread)';
             else searchInput.style.borderColor = 'var(--accent-waiting)';
@@ -1526,25 +1815,27 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             renderBooks(booksData[tab]);
         }
 
+
+
         booksData.read = parseCSV(rawCsvDataRead);
-        
+
         const existingRecommendations = parseCSV(rawCsvDataToRead);
-        
+
         // Only show explicit recommendations from rawCsvDataToRead
         booksData.toread = [...existingRecommendations];
 
         const readCountries = new Set(booksData.read.map(b => b.country.trim()));
         const recommendedCountries = new Set(booksData.toread.map(b => b.country.trim()));
         const allCountries = Object.keys(countryCodes);
-        
+
         const waitingCountries = allCountries.filter(c => !readCountries.has(c) && !recommendedCountries.has(c));
-        
+
         booksData.waiting = waitingCountries.map(c => ({
             country: c,
             author: "-",
             title: "En attente de recommandation"
         }));
-        
+
         // Sort by country name
         booksData.toread.sort((a, b) => a.country.localeCompare(b.country));
         booksData.waiting.sort((a, b) => a.country.localeCompare(b.country));
@@ -1574,7 +1865,7 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
             } else {
                 document.body.classList.remove('dark-mode');
                 localStorage.setItem('theme', 'light');
-            }    
+            }
         }
 
         toggleSwitch.addEventListener('change', switchTheme, false);
@@ -1591,4 +1882,5 @@ Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-am
 
     </script>
 </body>
+
 </html>
