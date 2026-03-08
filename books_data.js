@@ -156,10 +156,10 @@ Viêt Nam,Thu Hương Dương,Les paradis aveugles
 Yémen,Ali Al-Muqri,Femme interdite
 Taïwan,Bai Xianyong,Garçons de cristal
 Thaïlande,Kukrit Pramoj,Many Lives
-Espagne,Carlos Ruiz Zafón,Le Jeu de l'ange`;
+Espagne,Carlos Ruiz Zafón,Le Jeu de l'ange
+Norvège,Knut Hamsun,La Faim`;
 
 const rawCsvDataToRead = `Pays,Auteur,Livre
-Norvège,Knut Hamsun,La Faim
 Oman,Jokha Alharthi,Les Corps célestes
 Cambodge,Somaly Mam,Le silence de l'innocence
 Danemark,Peter Høeg,Smilla et l'amour de la neige
@@ -345,7 +345,7 @@ Morocco,MA,Leïla Slimani,Chanson douce,https://images-na.ssl-images-amazon.com/
 New Zealand,NZ,Alan  Duff,L'Ame des guerriers,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1376728356i/18337056.jpg,https://www.goodreads.com/book/show/18337056-l-me-des-guerriers?ref=nav_sb_ss_1_19,To read
 Nigeria,NG,Wole  Soyinka,La Mort et l'écuyer du roi,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1454261026i/28814095.jpg,https://www.goodreads.com/book/show/28814095-la-mort-et-l-cuyer-du-roi?ref=nav_sb_ss_1_26,To read
 Nigeria,NG,Chinua  Achebe,Tout s'effondre,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1484295837i/33848750.jpg,https://www.goodreads.com/book/show/33848750-tout-s-effondre?ref=nav_sb_ss_2_10,To read
-Norway,NO,Knut  Hamsun,La Faim,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327409667i/3140863.jpg,https://www.goodreads.com/book/show/3140863-la-faim?ref=nav_sb_ss_4_7,To read
+Norway,NO,Knut  Hamsun,La Faim,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327409667i/3140863.jpg,https://www.goodreads.com/book/show/3140863-la-faim?ref=nav_sb_ss_4_7,Read
 "Palestine, State of",PS,Ibrahim Jabra Jabra , Le Premier Puits,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1426800009i/25177497.jpg,https://www.goodreads.com/book/show/25177497-le-premier-puits?ref=nav_sb_ss_1_17,To read
 Peru,PE,Mario Vargas Llagos,Cent ans de solitude,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1355801632i/1019793.jpg,https://www.goodreads.com/book/show/1019793.Cent_ans_de_solitude?ref=nav_sb_ss_1_20,To read
 Peru,PE,Mario Vargas Llagos, Le héros discret,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1435760919i/25831543.jpg,https://www.goodreads.com/book/show/25831543-le-h-ros-discret?ref=nav_sb_ss_1_17,To read
