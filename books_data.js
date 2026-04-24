@@ -22,6 +22,7 @@ Antigua-et-Barbuda,Jamaica Kincaid,Autobiographie de ma mère
 Arabie saoudite,Rajaa Alsanea,Les filles de Riyadh
 Arabie saoudite,Raif Badawi,1000 coups de fouet - Parce que j'ai osé parler librement
 Argentine,Camila Sosa Villada,Les vilaines
+Argentine,Camila Sosa Villada,Histoire d'une domestication
 Arménie,Mariam Petrosyan,La maison dans laquelle
 Australie,Doris Pilkington,Follow the Rabbit-Proof Fence
 Australie,Markus Zusak,La voleuse de livres
@@ -34,6 +35,7 @@ Belgique,Amélie Nothomb,Métaphysique des tubes
 Belgique,Amélie Nothomb,Stupeurs et tremblements
 Bhoutan,Kunzang Choden,Le cercle du Karma
 Biélorussie,Svetlana Alexievitch,Derniers témoins
+Birmanie,Pascal Khoo Thwe,Une odyssée birmane
 Brésil,Paulo Coelho,L'alchimiste
 Brésil,José Mauro de Vasconcelos,Mon bel oranger
 Cameroun,Djaïli Amadou Amal,Les impatientes
@@ -51,8 +53,6 @@ Chine,Gao Xingjian,La montagne de l'âme
 Chine,Yan Lianke,Le Rêve du Village des Ding
 Colombie,Juan Gabriel Vásquez,Le bruit des choses qui tombent
 Comores,Ali Zamir,Anguille sous roche
-République du Congo,Alain Mabanckou,Mémoires du porc-épic
-République du Congo,Henri Lopes,Tribaliques
 Corée du Nord,Yeonmi Park,Je voulais juste vivre
 Corée du Sud,Lee Seung-U,La vie rêvée des plantes
 Côte d'Ivoire,Ahmadou Kourouma,Allah n'est pas obligé
@@ -65,6 +65,7 @@ Djibouti,Abdourahman A. Waberi,La divine chanson
 Émirats arabes unis,Maha Gargash,The Sand Fish: A Novel from Dubai
 Érythrée,Senait Meharit,Coeur de feu : j'étais une enfant soldat
 Espagne,Carlos Ruiz Zafón,L'ombre du vent
+Espagne,Carlos Ruiz Zafón,Le Jeu de l'ange
 Estonie,Andrus Kivirähk,L'homme qui savait la langue des serpents
 États-Unis,Robin Hobb,L'assassin royal
 États-Unis,Ernest Hemingway,Le vieil homme et la mer
@@ -114,7 +115,9 @@ Nigeria,Chimamanda Ngozi Adichie,L'hibiscus pourpre
 Nigeria,Chimamanda Ngozi Adichie,L’autre moitié du soleil
 Nigeria,Chimamanda Ngozi Adichie,Americanah
 Nigeria,Chimamanda Ngozi Adichie,Notes sur le chagrin
+Norvège,Knut Hamsun,La Faim
 Nouvelle-Zélande,Alan Duff,Un père pour mes rêves
+Ouganda,Jennifer Nansubuga Makumbi,La Première femme
 Ouzbékistan,Hamid Ismaïlov,Dans les eaux du lac interdit
 Pakistan,Malala Yousafzai,Moi Malala
 Palestine,Susan Abulhawa,Les matins de Jénine
@@ -123,6 +126,10 @@ Pérou,Mario Vargas Llosa,La fête au bouc
 Pologne,Andrzej Sapkowski,Le dernier vœu
 Pologne,I.L. Peretz,Histoires des temps passés et à venir
 Portugal,José Saramago,L'aveuglement
+République du Congo,Alain Mabanckou,Mémoires du porc-épic
+République du Congo,Henri Lopes,Tribaliques
+République tchèque,Franz Kafka,La métamorphose
+République tchèque,Franz Kafka,Le Procès
 Roumanie,Liliana Lazar,Enfants du diable
 Royaume-Uni,Philip Pullman,La croisée des mondes
 Russie,Youri Rytkhèou,L'étrangère aux yeux bleus
@@ -141,10 +148,10 @@ Soudan,Tayeb Salih,Saison de la migration vers le nord
 Sri Lanka,Shyam Selvaduraï,Les jardins de cannelle
 Suède,Ann-Helén Laestadius,Stöld
 Suède,Ann-Helén Laestadius,Straff
+Taïwan,Bai Xianyong,Garçons de cristal
 Tanzanie,Abdulrazak Gurnah,Près de la mer
 Tanzanie,Abdulrazak Gurnah,Paradis
-République tchèque,Franz Kafka,La métamorphose
-République tchèque,Franz Kafka,Le Procès
+Thaïlande,Kukrit Pramoj,Many Lives
 Trinité-et-Tobago,V.S. Naipaul,Une maison pour M. Biswas
 Tunisie,Yamen Manai,Bel abîme
 Turkménistan,Ak Welsapar,The tale of Aypi
@@ -153,31 +160,24 @@ Turquie,Elif Shafak,10 minutes et 38 secondes dans ce monde étrange
 Ukraine,Andreï Kourkov,Le pingouin
 Viêt Nam,Thu Hương Dương,Terre des oublis
 Viêt Nam,Thu Hương Dương,Les paradis aveugles
-Yémen,Ali Al-Muqri,Femme interdite
-Taïwan,Bai Xianyong,Garçons de cristal
-Thaïlande,Kukrit Pramoj,Many Lives
-Espagne,Carlos Ruiz Zafón,Le Jeu de l'ange
-Norvège,Knut Hamsun,La Faim`;
+Yémen,Ali Al-Muqri,Femme interdite`;
 
 const rawCsvDataToRead = `Pays,Auteur,Livre
-Oman,Jokha Alharthi,Les Corps célestes
 Cambodge,Somaly Mam,Le silence de l'innocence
+Croatie,Želimir Periš,La sorcière à la jambe d'os
 Danemark,Peter Høeg,Smilla et l'amour de la neige
+Guatemala,Miguel Ángel Asturias,The President
+Indonésie,Pramoedya Ananta Toer,"Gadis Pantai, la fille du rivage"
+Kenya,Margaret A. Ogola,The River and the Source
 Lituanie,Valdas Papievis,Un morceau de ciel sur terre
 Lituanie,Juozas Baltušis,La Saga de Youza
-Zimbabwe,Tsitsi Dangarembga,Nervous Conditions
-Timor oriental,Luís Cardoso,Une île au loin
-Uruguay,Mario Benedetti,La Trêve
-Birmanie,Pascal Khoo Thwe,Une odyssée birmane
-Swaziland (Eswatini),Sarah Mkhonza,Weeding the Flowerbeds
-Guatemala,Miguel Ángel Asturias,The President
+Oman,Jokha Alharthi,Les Corps célestes
 Paraguay,Augusto Roa Bastos,Fils d'homme
 République tchèque,Milan Kundera,L'insoutenable légèreté de l'être
-Kenya,Margaret A. Ogola,The River and the Source
-Ouganda,Jennifer Nansubuga Makumbi,La Première femme
-Croatie,Želimir Periš,La sorcière d'os
-Indonésie,Pramoedya Ananta Toer,"Gadis Pantai, la fille du rivage"
-Argentine,Camila Sosa Villada,Histoire d'une domestication`;
+Swaziland (Eswatini),Sarah Mkhonza,Weeding the Flowerbeds
+Timor oriental,Luís Cardoso,Une île au loin
+Uruguay,Mario Benedetti,La Trêve
+Zimbabwe,Tsitsi Dangarembga,Nervous Conditions`;
 
 const rawCsvDataCovers = `Country,alpha-2,Author,Title,Cover,Link,Read?
 Afghanistan,AF,Khaled Hosseini,Les cerfs-volants de Kaboul ,https://www.babelio.com/couv/CVT_Les-cerfs-volants-de-Kaboul_808.jpeg,https://www.babelio.com/livres/Hosseini-Les-cerfs-volants-de-Kaboul/6303,Read
@@ -185,6 +185,7 @@ Afghanistan,AF,Atiq Rahimi,Syngué Sabour : Pierre de patience,https://www.babel
 Afghanistan,AF,Atiq Rahimi,Terre et cendres,https://www.babelio.com/couv/CVT_Terre-et-cendres_6016.jpg,https://www.babelio.com/livres/Rahimi-Terre-et-cendres/39483,Read
 Afghanistan,AF,Atiq Rahimi,Les porteurs d’eau,https://www.babelio.com/couv/CVT_Les-porteurs-deau_8849.jpg,https://www.babelio.com/livres/Rahimi-Les-porteurs-deau/1077810,Read
 Afghanistan,AF,Khaled Hosseini,Ainsi résonne l'écho infini des montagnes,https://www.babelio.com/couv/CVT_cvt_Ainsi-resonne-lecho-infini-des-montagnes_9916.jpg,https://www.babelio.com/livres/Hosseini-Ainsi-resonne-lecho-infini-des-montagnes/537309,Read
+Afghanistan,AF,Khaled Hosseini, Mille Soleils splendides,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1331407044i/1290334.jpg,https://www.goodreads.com/book/show/1290334.Mille_Soleils_splendides?ac=1&from_search=true&qid=ucYH9Zo9wC&rank=1,To read
 Albania,AL,Ismail Kadare,Avril Brisé,https://www.babelio.com/couv/CVT_Avril-brise_2183.jpg,https://www.babelio.com/livres/Kadare-Avril-brise/22187,Read
 Algeria,DZ,Yasmina Khadra,Les hirondelles de Kaboul,https://www.babelio.com/couv/CVT_3564_584603.jpg,https://www.babelio.com/livres/Khadra-Les-Hirondelles-de-Kaboul/6634,Read
 Algeria,DZ,Yasmina Khadra,L’attentat,https://www.babelio.com/couv/CVT_3877_1683657.jpg,https://www.babelio.com/livres/Khadra-Lattentat/5221,Read
@@ -193,77 +194,132 @@ Algeria,DZ,Yasmina Khadra,Les agneaux du seigneur,https://www.babelio.com/couv/C
 Algeria,DZ,Kamel Daoud,"Meurault, contre-enquête",https://www.babelio.com/couv/CVT_CVT_Meursault-contre-enquete_1459.jpg,https://www.babelio.com/livres/Daoud-Meursault-contre-enquete/573120,Read
 Angola,AO,José Eduardo Agualusa,Théorie générale de l'oubli,https://www.babelio.com/couv/CVT_CVT_Theorie-generale-de-loubli_5594.jpg,https://www.babelio.com/livres/Agualusa-Theorie-generale-de-loubli/554570,Read
 Argentina,AR,Camila Sosa Villada,Les vilaines,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1610833789i/56688810.jpg,https://www.goodreads.com/book/show/56688810-les-vilaines,Read
+Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1718940504i/211082910.jpg,https://www.goodreads.com/book/show/211082910-histoire-d-une-domestication,Read
+Armenia,AM,Mariam Petrosyan,La maison dans laquelle,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1458546351i/29564884.jpg,https://www.goodreads.com/book/show/29564884-la-maison-dans-laquelle,To read
+Australia,AU,Richard  Flanagan,Désirer,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1470577637i/8429419.jpg,https://www.goodreads.com/book/show/8429419-d-sirer?ac=1&from_search=true&qid=7XuDvBoGHm&rank=1,To read
 Austria,AT,Stefan Zweig,Lettre d'une inconnue,https://www.babelio.com/couv/CVT_cvt_Lettre-dune-inconnue_1089.jpg,https://www.babelio.com/livres/Zweig-Lettre-dune-inconnue/26034,Read
 Austria,AT,Stefan Zweig,Le joueur d’échecs,https://www.babelio.com/couv/CVT_Le-Joueur-dechecs_2085.jpeg,https://www.babelio.com/livres/Zweig-Le-Joueur-dechecs/1771,Read
 Bangladesh,BD,Tahmima Anam,Les vaisseaux frères,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1509028282i/36480877.jpg,https://www.goodreads.com/book/show/36480877-les-vaisseaux-fr-res,Read
-Belgium,BE,Amélie Nothomb,Stupeur et tremblements,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1336069300i/71458.jpg,https://www.goodreads.com/book/show/71458.Stupeur_et_tremblements,Read
+Bangladesh,BD,Tahmima  Anam,Une vie de choix,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1508183488i/10784478.jpg,https://www.goodreads.com/book/show/10784478-une-vie-de-choix?ref=nav_sb_ss_1_16,To read
 Belarus,BY,Svetlana Alexievitch,Derniers témoins,https://www.babelio.com/couv/CVT_Derniers-temoins_3252.jpg,https://www.babelio.com/livres/Alexievitch-Derniers-temoins/371223,Read
+Belgium,BE,Amélie Nothomb,Stupeur et tremblements,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1336069300i/71458.jpg,https://www.goodreads.com/book/show/71458.Stupeur_et_tremblements,Read
+Belgium,BE,Jeroen  Olyslaegers,Trouble,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1545068163i/43255414.jpg,https://www.goodreads.com/book/show/43255414-trouble?from_search=true&from_srp=true&qid=RqQbe97g8M&rank=1,To read
+Belize,BZ,Zee  Edgell,Beka Lamb,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386912613i/271489.jpg,https://www.goodreads.com/book/show/271489.Beka_Lamb?ref=nav_sb_ss_1_9,To read
+Benin,BJ,Florent  Couao-Zotti,Western tchoukoutou,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1557748637i/45730853.jpg,https://www.goodreads.com/book/show/45730853-western-tchoukoutou?from_search=true&from_srp=true&qid=DcPXOlDRH8&rank=1,To read
 Bhutan,BT,Kunzang  Choden,Le cercle du Karma,https://www.babelio.com/couv/CVT_Le-Cercle-du-karma_549.jpg,https://www.babelio.com/livres/Choden-Le-Cercle-du-karma/13140,Read
+Bosnia and Herzegovina,BA,Ivo  Andrić,Le pont sur la Drina,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1530257651i/3147.jpg,https://www.goodreads.com/book/show/3147.Le_Pont_sur_la_Drina?ref=nav_sb_ss_1_20,To read
 Brazil,BR,Paulo Coelho,L’alchimiste,https://www.babelio.com/couv/CVT_17168_899617.jpg,https://www.babelio.com/livres/Coelho-Lalchimiste/5047,Read
 Brazil,BR,José Mauro de  Vasconcelos,Mon bel oranger,https://www.babelio.com/couv/CVT_Mon-bel-oranger_1045.jpg,https://www.babelio.com/livres/Vasconcelos-Mon-bel-oranger/8718,Read
+Cabo Verde,CV,Dina  Salústio,The Madwoman of Serrano,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1546196245i/41945083.jpg,https://www.goodreads.com/book/show/41945083-the-madwoman-of-serrano?ref=nav_sb_ss_1_23,To read
+Cambodge,KH,Somaly Mam,Le silence de l'innocence,https://www.babelio.com/couv/CVT_Le-silence-de-linnocence_2187.jpg,https://www.babelio.com/livres/Mam-Le-silence-de-linnocence/13217,To read
 Cameroon,CM,Djaïli Amadaou Amal,Les impatientes,https://m.media-amazon.com/images/I/51CEJb1lsiL._SX195_.jpg,https://www.babelio.com/livres/Amadou-Amal-Les-Impatientes/1240023,Read
 Cameroon,CM,Léonora Miano,Rouge imératrice,https://www.babelio.com/couv/CVT_Rouge-imperatrice_7806.jpg,https://www.babelio.com/livres/Miano-Rouge-imperatrice/1147808,Read
+Cameroon,CM,Mutt-Lon,Ceux qui sortent dans la nuit,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1377070530i/18363221.jpg,https://www.goodreads.com/book/show/18363221-ceux-qui-sortent-dans-la-nuit?ref=nav_sb_ss_1_29,To read
+Cameroon,CM,Léonora Miano, La Saison de l'ombre,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1377499918i/18375176.jpg,https://www.goodreads.com/book/show/18375176-la-saison-de-l-ombre?ref=nav_sb_ss_1_21,To read
 Canada,CA,Steven Erikson,Le livre des martyrs,https://www.babelio.com/couv/CVT_Le-Livre-des-Martyrs-T1-les-Jardins-de-la-Lune_8241.jpg,https://www.babelio.com/livres/Erikson-Le-Livre-des-Martyrs-tome-1--Les-Jardins-de-la-Lu/1045981,Read
 Chile,CL,Luis Sepulveda,Le vieux qui lisait des romans d’amour,https://www.babelio.com/couv/CVT_Le-vieux-qui-lisait-des-romans-damour_6974.jpg,https://www.babelio.com/livres/Sepulveda-Le-vieux-qui-lisait-des-romans-damour/1683,Read
 China,CN,Cixin Liu,The three body problem,https://www.babelio.com/couv/CVT_Le-probleme-a-trois-corps_8914.jpg,https://www.babelio.com/livres/Cixin-Le-probleme-a-trois-corps/1459875,Read
 China,CN,Kunwu Li,Une vie chinoise,https://www.babelio.com/couv/CVT_Une-vie-chinoise-tome-1--Le-temps-du-pere_5185.jpg,https://www.babelio.com/livres/Otie-Une-vie-chinoise-tome-1--Le-temps-du-pere/940470,Read
 China,CN,Gao Xingjian,La montagne de l'âme,https://www.babelio.com/couv/CVT_La-Montagne-de-lame_1750.jpg,https://www.babelio.com/livres/Xingjian-La-montagne-de-lame/2412,Read
+Comoros,KM,Ali  Zamir,Anguille sous roche,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1461890066i/30053009.jpg,https://www.goodreads.com/book/show/30053009-anguille-sous-roche?ref=nav_sb_ss_1_19,To read
 Congo,CG,Alain Mabanckou,Mémoires du porc-épic,https://www.babelio.com/couv/CVT_CVT_memoire-de-porc-epic_9601.jpg,https://www.babelio.com/livres/Mabanckou-Memoires-de-porc-epic/17169,Read
 Congo,CG,Henri Lopes,Tribaliques,https://images-na.ssl-images-amazon.com/images/I/51H1KX0TEXL._SX210_.jpg,https://www.babelio.com/livres/Lopes-Tribaliques/128978,Read
+Congo,CG,Henri Lopes, Le Pleurer-Rire,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1572513201i/5466679.jpg,https://www.goodreads.com/book/show/5466679-le-pleurer-rire?ref=nav_sb_ss_1_16,To read
+"Congo, Democratic Republic of the",CD,Sony Labou Tansi,L'anté-peuple,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1598718293i/11836029.jpg,https://www.goodreads.com/book/show/11836029-l-ant--peuple?ref=nav_sb_ss_1_13,To read
+"Congo, Democratic Republic of the",CD,Sony Labou Tansi,L'anté-peuple,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1634314842i/59353886.jpg,https://www.goodreads.com/book/show/59353886-la-force-des-femmes?ac=1&from_search=true&qid=qJZsnx4fJE&rank=1,To read
+Côte d'Ivoire,CI,Ahmadou Kourouma,Allah n’est pas obligé,https://www.babelio.com/couv/CVT_Allah-nest-pas-oblige_2046.jpg,https://www.babelio.com/livres/Kourouma-Allah-nest-pas-oblige/1687,Read
+Côte d'Ivoire,CI,Ahmadou Kourouma,Les Soleils des indépendances,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1343464469i/939743.jpg,https://www.goodreads.com/book/show/939743.Les_Soleils_des_ind_pendances?ref=nav_sb_ss_1_29,To read
 Cuba,CU,José Carlos Somoza ,La théorie des cordes,https://www.babelio.com/couv/CVT_La-Theorie-des-cordes_4924.jpg,https://www.babelio.com/livres/Somoza-La-Theorie-des-cordes/13382,Read
 Cuba,CU,Leonardo Padura,Poussière dans le vent,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1629813798i/58501679.jpg,https://www.goodreads.com/book/show/58501679-poussi-re-dans-le-vent,Read
 Czechia,CZ,Franz Kafka,La métamorphose,https://www.babelio.com/couv/CVT_La-metamorphose_1704.jpg,https://www.babelio.com/livres/Kafka-La-metamorphose/721946,Read
 Czechia,CZ,Franz Kafka,Le Procès,https://www.babelio.com/couv/CVT_Le-Proces_9148.jpg,https://www.babelio.com/livres/Kafka-Le-Proces/1537,Read
-Côte d'Ivoire,CI,Ahmadou Kourouma,Allah n’est pas obligé,https://www.babelio.com/couv/CVT_Allah-nest-pas-oblige_2046.jpg,https://www.babelio.com/livres/Kourouma-Allah-nest-pas-oblige/1687,Read
+Czechia,CZ,Milan Kundera,L'insoutenable légèreté de l'être,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327291593i/835810.jpg,https://www.goodreads.com/book/show/835810.L_Insoutenable_l_g_ret_de_l_tre,To read
+Denmark,DK,Peter Høeg,Smilla et l'amour de la neige,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1294618520i/201092.jpg,https://www.babelio.com/livres/Hoeg-Smilla-et-lamour-de-la-neige/5730,To read
 Djibouti,DJ,Abdourahman A. Waberi,La divine chanson,https://www.babelio.com/couv/CVT_C_La-Divine-Chason_5814.jpg,https://www.babelio.com/livres/Waberi-La-divine-chanson/676022,Read
+Dominican Republic,DO,Junot  Díaz,La Brève et Merveilleuse Vie d'Oscar Wao,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1357174598i/8447276.jpg,https://www.goodreads.com/book/show/8447276-la-br-ve-et-merveilleuse-vie-d-oscar-wao?ref=nav_sb_ss_1_40,To read
 Egypt,EG,Alaa al-Aswany,L'immeuble Yacoubian,https://www.babelio.com/couv/CVT_cvt_LImmeuble-Yacoubian_989.jpg,https://www.babelio.com/livres/El-Aswany-LImmeuble-Yacoubian/5249,Read
 Estonia,EE,Andrus Kivirähk,L'Homme qui savait la langue des serpents,https://www.babelio.com/couv/CVT_Lhomme-qui-savait-la-langue-des-serpents_4452.jpg,https://www.babelio.com/livres/Kivirhk-Lhomme-qui-savait-la-langue-des-serpents/438225,Read
 Ethiopia,ET,Maaza Mengiste,The Shadow King,https://m.media-amazon.com/images/I/415CC6Nw59L._SX195_.jpg,https://www.babelio.com/livres/Mengiste-Le-roi-fantome/1375480,Read
+Ethiopia,ET,Maaza Mengiste,Sous le regard du lion,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1678260124i/81264731.jpg,https://www.goodreads.com/book/show/81264731-sous-le-regard-du-lion-romans-nouvelles-r-cits?ref=nav_sb_ss_1_22,To read
+Finland,FI,Kari  Hotakainen,La part de l'homme,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1292849887i/9967056.jpg,https://www.goodreads.com/book/show/9967056-la-part-de-l-homme?ref=nav_sb_ss_1_18,To read
 France,FR,Olivier Peru,Druide,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1336903236i/10297791.jpg,https://www.goodreads.com/book/show/10297791-druide?ac=1&from_search=true&qid=y0MNWUmTyg&rank=1,Read
 Germany,DE,Timur Vermes,Il est de retour,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1401025275i/22318695.jpg,https://www.goodreads.com/book/show/22318695-il-est-de-retour?ref=nav_sb_ss_1_16,Read
 Ghana,GH,Yaa  Gyasi,No home,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1514644095i/37773960.jpg,https://www.goodreads.com/book/show/37773960-no-home?ref=nav_sb_ss_1_11,Read
+Ghana,GH,Ayi Kwei Armah,The Beautiful Ones Are Not Yet Born,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1539270337i/42255306.jpg,https://www.goodreads.com/book/show/42255306-the-beautiful-ones-are-not-yet-born?from_search=true&from_srp=true&qid=Sbsh1XFKTM&rank=1,To read
+Guatemala,GT,Miguel Ángel Asturias,Hommes de maïs,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1355092340i/1920470.jpg,https://www.goodreads.com/book/show/1920470.Hommes_de_Mais?from_search=true&from_srp=true&qid=3nf2e6V6Az&rank=1,To read
 Guinea,GN,Laye Camara,L'enfant noir,https://www.babelio.com/couv/CVT_LEnfant-noir_7545.jpg,https://www.babelio.com/livres/Laye-LEnfant-noir/610584,Read
 Guinea,GN,Tierno Monénembo,Saharienne Indigo,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677851927i/60132196.jpg,https://www.babelio.com/livres/Monenembo-Saharienne-indigo/1378377,Read
+Guinea,GN,Tierno Monénembo, Le Roi de Kahel,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387368812i/6136714.jpg,https://www.goodreads.com/book/show/6136714-le-roi-de-kahel?from_search=true&from_srp=true&qid=RJuxFuLVqP&rank=1,To read
 Haiti,HT,Yanick Lahens,Bain de lune,https://www.babelio.com/couv/CVT_Bain-de-lune_7656.jpg,https://www.babelio.com/livres/Lahens-Bain-de-lune/619981,Read
 Haiti,HT,Yanick Lahens,Guillaume et Natalie,https://www.babelio.com/couv/CVT_cvt_Guillaume-et-Nathalie_6964.jpg,https://www.babelio.com/livres/Lahens-Guillaume-et-Nathalie/477859,Read
+Haiti,HT,Jacques  Roumain,Gouverneurs de la rosée,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1172672083i/204987.jpg,https://www.goodreads.com/book/show/204987.Gouverneurs_de_la_ros_e?ref=nav_sb_ss_1_23,To read
 Honduras,HN,Horacio Castellanos Moya,Le dégoût ,https://www.babelio.com/couv/CVT_Le-degout--Thomas-Bernhard-a-San-Salvador_53.jpg,https://www.babelio.com/livres/Castellanos-Moya-Le-degout--Thomas-Bernhard-a-San-Salvador/97923,Read
+Hungary,HU,Imre Kertész,Être sans destin,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1331567945i/2957382.jpg,https://www.goodreads.com/book/show/2957382-tre-sans-destin,To read
 Iceland,IS,Arnaldur Indriðason,Les fils de la poussière,https://www.babelio.com/couv/CVT_Les-Fils-de-la-poussiere_387.jpg,https://www.babelio.com/livres/Indriason-Les-fils-de-la-poussiere/1070325,Read
 India,IN,Amish Tripathi,The Shive trilogy,https://images-eu.ssl-images-amazon.com/images/I/51C9w95nauL._SX195_.jpg,https://www.babelio.com/livres/Tripathi-La-trilogie-de-Shiva-tome-1--Les-Immortels-de-Mel/1006451,Read
-Iran (Islamic Republic of),IR,Marjane Satrapi,Persepolis,https://www.babelio.com/couv/CVT_Persepolis_778.jpg,https://www.babelio.com/livres/Satrapi-Persepolis/3934,Read
+Indonesia,ID,Pramoedya Ananta  Toer, Le Monde des hommes,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1539207584i/42273846.jpg,https://www.goodreads.com/book/show/42273846-le-monde-des-hommes?ref=nav_sb_ss_1_20,To read
+Indonesia,ID,Pramoedya Ananta Toer,"Gadis Pantai, la fille du rivage",https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1182495583i/1284774.jpg,https://www.goodreads.com/book/show/1284774.Gadis_Pantai,To read
 Iran,IR,Sadegh Hedayat,La chouette aveugle,https://www.babelio.com/couv/CVT_La-Chouette-aveugle_9596.jpg,https://www.babelio.com/livres/Hedayat-La-Chouette-aveugle/5717,Read
+Iran (Islamic Republic of),IR,Marjane Satrapi,Persepolis,https://www.babelio.com/couv/CVT_Persepolis_778.jpg,https://www.babelio.com/livres/Satrapi-Persepolis/3934,Read
 Iraq,IQ,Sinan Antoon,Ave Maria,https://images-eu.ssl-images-amazon.com/images/I/41S89n490yL._SX195_.jpg,https://www.babelio.com/livres/Antoon-Ave-Maria/1042577,Read
 Iraq,IQ,Sinan Antoon,Seul le grenadier,https://www.babelio.com/couv/CVT_Seul-le-grenadier_266.jpg,https://www.babelio.com/livres/Antoon-Seul-le-grenadier/922886,Read
 Iraq,IQ,Inaam Kachachi ,Dispersés,https://images-na.ssl-images-amazon.com/images/I/31%2BJ6b-a8sL._SX210_.jpg,https://www.babelio.com/livres/Kachachi-Disperses/805539,Read
+Iraq,IQ,Sinan Antoon,LI'jaam,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1328774919i/129302.jpg,https://www.goodreads.com/book/show/129302.I_jaam,To read
 Ireland,IE,Samuel Beckett,En attendant Godot,https://www.babelio.com/couv/CVT_En-attendant-Godot_5702.jpg,https://www.babelio.com/livres/Beckett-En-attendant-Godot/3407,Read
 Italy,IT,Luca Di Fulvio,Le Gang des rêves,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1467459214i/30829369.jpg,https://www.goodreads.com/book/show/30829369-le-gang-des-r-ves,Read
+Jamaica,JM,Marlon  James,Brève histoire de sept meurtres,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474701085i/31612050.jpg,https://www.goodreads.com/book/show/31612050-br-ve-histoire-de-sept-meurtres?ref=nav_sb_ss_1_31,To read
 Japan,JP,Kaoru Mori,Bride stories,https://www.babelio.com/couv/CVT_cvt_Bride-Stories-Tome-1_1084.jpg,https://www.babelio.com/livres/Mori-Bride-Stories-tome-1/271761,Read
 Japan,JP,Ogawa Ito,Le restaurant de l'amour retrouvé,https://www.babelio.com/couv/CVT_Le-restaurant-de-lamour-retrouve_9496.jpg,https://www.babelio.com/livres/Ogawa-Le-restaurant-de-lamour-retrouve/513993,Read
-Korea (Democratic People's Republic of),KP,Yeonmi Park,Je voulais juste vivre,"https://m.media-amazon.com/images/I/417zrkeyJfL._SY291_BO1,204,203,200_QL40_ML2_.jpg",https://www.babelio.com/livres/Park-Je-voulais-juste-vivre/824881,Read
+Japan,JP,Ogawa Ito,La Papeterie Tsubaki,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1614858468i/40671013.jpg,https://www.goodreads.com/book/show/40671013-la-papeterie-tsubaki?ref=nav_sb_ss_1_10,To read
+Jordan,JO,Abdul Rahman Munif,Cities of Salt,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1644691098i/2722.jpg,https://www.goodreads.com/book/show/2722.Cities_of_Salt,To read
+Jordan,JO,Ibrahim  Nasrallah,Time of White Horses,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1338386997i/13583271.jpg,https://www.goodreads.com/book/show/13583271-time-of-white-horses?ref=nav_sb_ss_1_20,To read
+Jordan,JO,Rabih Alameddine,Les Vies de papier,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1472212585i/31683802.jpg,https://www.goodreads.com/book/show/31683802-les-vies-de-papier,To read
+Kenya,KE,Ngũgĩ  wa Thiong'o, Pétales de sang,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1412847427i/23346100.jpg,https://www.goodreads.com/book/show/23346100-p-tales-de-sang?ref=nav_sb_ss_2_16,To read
+Kenya,KE,Margaret A. Ogola,The River and the Source,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1347665205i/2599364.jpg,https://www.goodreads.com/book/show/259.The_River_and_the_Source,To read
 "Korea, Republic of",KR,Lee Seung-u,La vie rêvée des plantes,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1327874627i/5986821.jpg,https://www.babelio.com/livres/Lee-La-vie-revee-des-plantes/24095,Read
+Korea (Democratic People's Republic of),KP,Yeonmi Park,Je voulais juste vivre,"https://m.media-amazon.com/images/I/417zrkeyJfL._SY291_BO1,204,203,200_QL40_ML2_.jpg",https://www.babelio.com/livres/Park-Je-voulais-juste-vivre/824881,Read
 Kyrgyzstan,KG,Chingiz Aitmatov,Djamilia,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1354902617i/604208.jpg,https://www.goodreads.com/book/show/604208.Jamilia?ref=nav_sb_ss_1_7,Read
 Lebanon,LB,Zeina Abirached,Prendre refuge,https://www.babelio.com/couv/CVT_Prendre-refuge_5810.jpg,https://www.babelio.com/livres/Enard-Prendre-refuge/1068663,Read
 Lebanon,LB,Zeina Abirached,Le piano oriental,https://www.babelio.com/couv/CVT_Le-Piano-oriental_9175.jpg,https://www.babelio.com/livres/Abirached-Le-Piano-oriental/738822,Read
 Lebanon,LB,Dima Abdallah,Mauvaises herbes,https://www.babelio.com/couv/CVT_Mauvaises-herbes_7050.jpg,https://www.babelio.com/livres/Abdallah-Mauvaises-herbes/1236241,Read
 Lebanon,LB,Dima Abdallah,Bleu nuit,https://www.babelio.com/couv/CVT_Bleu-nuit_12.jpg,https://www.babelio.com/livres/Abdallah-Bleu-nuit/1373974,Read
+Lebanon,LB,Amin Maalouf, Le Rocher de Tanios,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348943220i/456580.jpg,https://www.goodreads.com/book/show/456580.Le_Rocher_de_Tanios_Ldp_Litterature_?ref=nav_sb_ss_1_20,To read
 Lesotho,LS,Thomas Mofolo,Chaka,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387708040i/1101837.jpg,https://www.goodreads.com/book/show/1101837.Chaka?ac=1&from_search=true&qid=2BspxshM1u&rank=1,Read
 Libya,LY,Ibrahim  Al-Koni,Le saignement de la pierre,https://images-na.ssl-images-amazon.com/images/I/41BDH3P858L._SX195_.jpg,https://www.babelio.com/livres/Al-Koni-Le-Saignement-de-la-pierre/165562,Read
+Lithuania,LT,Valdas Papievis,Un morceau de ciel sur terre,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1634568960i/57615696.jpg,https://www.goodreads.com/book/show/57615696-un-morceau-de-ciel-sur-terre,To read
+Lithuania,LT,Juozas Baltušis,La Saga de Youza,https://www.babelio.com/couv/CVT_La-saga-de-Youza_8528.jpg,https://www.babelio.com/livres/Baltusis-La-Saga-de-Youza/12837,To read
+Lithuania,LT,Juozas Baltušis, La Saga de Youza,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1470726305i/31378947.jpg,https://www.goodreads.com/book/show/31378947-la-saga-de-youza?ref=nav_sb_ss_1_17,To read
 Malawi,MW,William Kamkwamba,Le garçon qui dompta le vent,https://www.babelio.com/couv/CVT_CVT_le-garcon-qui-dompta-le-vent_4118.jpg,https://www.babelio.com/livres/Kamkwamba-Le-garcon-qui-dompta-le-vent/180214,Read
 Malaysia,MY,Ten Twan Eng,Le don de la pluie,https://www.babelio.com/couv/CVT_Le-don-de-la-pluie_5102.jpg,https://www.babelio.com/livres/Twan-Eng-Le-don-de-la-pluie/1054355,Read
 Malaysia,MY,Ten Twan Eng,Le Jardin des brumes du soir,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1464554678i/30314997.jpg,https://www.goodreads.com/book/show/30314997-le-jardin-des-brumes-du-soir?ref=nav_sb_ss_1_20,Read
 Mali,ML,Fatoumata Keita,Sous fer,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1577536936i/50020207.jpg,https://www.goodreads.com/book/show/50020207-sous-fer?ref=nav_sb_ss_2_8,Read
+Mali,ML,Amadou Hampâté Bâ," Amkoullel, l'enfant Peul",https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1187622962i/1739331.jpg,https://www.goodreads.com/book/show/1739331.Amkoullel_l_enfant_Peul?ref=nav_sb_ss_1_25,To read
+Martinique,MQ,Aimé  Césaire,Cahier d'un retour au pays natal,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1172296554i/161956.jpg,https://www.goodreads.com/book/show/161956.Cahier_d_un_retour_au_pays_natal?ref=nav_sb_ss_1_32,To read
 Mauritius,MU,Jean-Marie Gustave Le Clézio ,Désert,https://www.babelio.com/couv/CVT_Desert_9969.jpg,https://www.babelio.com/livres/Le-Clezio-Desert/17283,Read
 Mauritius,MU,Nathacha Appanah,Les vaisseaux frères,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1427810682i/2117265.jpg,https://www.goodreads.com/book/show/2117265.Le_dernier_fr_re,Read
 Mexico,MX,Juan Rulfo,Pedro Paramo,https://www.babelio.com/couv/CVT_Pedro-Pramo_3848.jpg,https://www.babelio.com/livres/Rulfo-Pedro-Pramo/20599,Read
 Mongolia,MN,Galsan Tschinag,Ciel bleu : Une enfance dans le Haut Altaï,https://www.babelio.com/couv/CVT_Ciel-bleu_3603.jpg,https://www.babelio.com/livres/Tschinag-Ciel-bleu/1364343,Read
+Mongolia,MN,Galsan Tschinag, La fin du chant,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468399986i/31111271.jpg,https://www.goodreads.com/book/show/31111271-la-fin-du-chant?ref=nav_sb_ss_1_16,To read
 Morocco,MA,Tahar Ben  Jelloun,Le miel et l’amertume,https://m.media-amazon.com/images/I/41oPk+osmqL._SX195_.jpg,https://www.babelio.com/livres/Ben-Jelloun-Le-miel-et-lamertume/1270459,Read
+Morocco,MA,Leïla Slimani,Chanson douce,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474042770i/32060287.jpg,https://www.goodreads.com/book/show/32060287-chanson-douce?ref=nav_sb_ss_1_13,To read
 Mozambique,MZ,Mia Couto,L'Accordeur de silences,https://www.babelio.com/couv/CVT_9782864248392.jpg,https://www.babelio.com/livres/Couto-LAccordeur-de-silences/292529,Read
+Myanmar,MM,Pascal Khoo Thwe,Une odyssée birmane,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1517102450i/38220867.jpg,https://www.goodreads.com/book/show/38220867-une-odyss-e-birmane,Read
 Netherlands,NL,Anne Frank,le journal d’Anne Frank,https://www.babelio.com/couv/CVT_cvt_Journal-dAnne-Frank_2489.jpg,https://www.babelio.com/livres/Frank-Journal-dAnne-Frank/706783,Read
+New Zealand,NZ,Alan  Duff,L'Ame des guerriers,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1376728356i/18337056.jpg,https://www.goodreads.com/book/show/18337056-l-me-des-guerriers?ref=nav_sb_ss_1_19,To read
 Nigeria,NG,Chimamanda Ngozi  Adichie,L’hibiscus pourpre,https://www.babelio.com/couv/CVT_Lhibiscus-pourpre_1178.jpg,https://www.babelio.com/livres/Adichie-Lhibiscus-pourpre/264938,Read
 Nigeria,NG,Chimamanda Ngozi  Adichie,L’autre moitié du soleil,https://www.babelio.com/couv/CVT_cvt_Lautre-moitie-du-soleil_8159.jpg,https://www.babelio.com/livres/Adichie-Lautre-moitie-du-soleil/101083,Read
 Nigeria,NG,Chimamanda Ngozi  Adichie,Notes sur le chagrin,https://www.babelio.com/couv/CVT_Notes-sur-le-chagrin_6640.jpg,https://www.babelio.com/livres/Adichie-Notes-sur-le-chagrin/1353209,Read
 Nigeria,NG,Chimamanda Ngozi  Adichie,Americanah,https://www.babelio.com/couv/CVT_Americanah_1301.jpg,https://www.babelio.com/livres/Adichie-Americanah/670178,Read
+Nigeria,NG,Wole  Soyinka,La Mort et l'écuyer du roi,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1454261026i/28814095.jpg,https://www.goodreads.com/book/show/28814095-la-mort-et-l-cuyer-du-roi?ref=nav_sb_ss_1_26,To read
+Nigeria,NG,Chinua  Achebe,Tout s'effondre,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1484295837i/33848750.jpg,https://www.goodreads.com/book/show/33848750-tout-s-effondre?ref=nav_sb_ss_2_10,To read
+Norway,NO,Knut Hamsun,La Faim,https://www.babelio.com/couv/CVT_La-Faim_7948.jpg,https://www.babelio.com/livres/Hamsun-La-Faim/2056,To read
+Norway,NO,Knut  Hamsun,La Faim,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327409667i/3140863.jpg,https://www.goodreads.com/book/show/3140863-la-faim?ref=nav_sb_ss_4_7,Read
+Oman,OM,Jokha Alharthi,Les Corps célestes,https://m.media-amazon.com/images/I/51FycaqxwbL._SX210_.jpg,https://www.babelio.com/livres/Alharthi-Les-corps-celestes/1155982,To read
 Pakistan,PK,Malala Yousafzai,"Moi Malala - En luttant pour l'éducation, elle a changé le monde",https://www.babelio.com/couv/CVT_Moi-Malala_9800.jpg,https://www.babelio.com/livres/Yousafzai-Moi-Malala/531546,Read
+"Palestine, State of",PS,Ibrahim Jabra Jabra , Le Premier Puits,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1426800009i/25177497.jpg,https://www.goodreads.com/book/show/25177497-le-premier-puits?ref=nav_sb_ss_1_17,To read
 Peru,PE,Mario Vargas Llagos,The Feast of the Goat,https://www.babelio.com/couv/CVT_La-fete-au-Bouc_1471.jpg,https://www.babelio.com/livres/Vargas-Llosa-La-fete-au-Bouc/2956,Read
+Peru,PE,Mario Vargas Llagos,Cent ans de solitude,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1355801632i/1019793.jpg,https://www.goodreads.com/book/show/1019793.Cent_ans_de_solitude?ref=nav_sb_ss_1_20,To read
+Peru,PE,Mario Vargas Llagos, Le héros discret,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1435760919i/25831543.jpg,https://www.goodreads.com/book/show/25831543-le-h-ros-discret?ref=nav_sb_ss_1_17,To read
 Poland,PL,Andrzej Sapkowski,Le dernier voeu,https://www.babelio.com/couv/CVT_Le-Sorceleur-tome-1--Le-Dernier-Voeu-reedition_2699.jpg,https://www.babelio.com/livres/Sapkowski-Le-Sorceleur-tome-1--Le-dernier-voeu-reedition/259198,Read
 Poland,PL,I.L. Peretz,Histoires des temps passés et à venir,https://m.media-amazon.com/images/I/41Rha2mPEgL._SX195_.jpg,https://www.babelio.com/livres/Peretz-Histoires-des-temps-passes-et-a-venir/1237340,Read
 Portugal,PT,José Saramago,L’aveuglement,https://www.babelio.com/couv/CVT_Laveuglement_6572.jpeg,https://www.babelio.com/livres/Saramago-Laveuglement/2759,Read
@@ -271,15 +327,24 @@ Romania,RO,Liliana Lazar,Enfants du diable,https://images-na.ssl-images-amazon.c
 Russian Federation,RU,Isaac Asimov,L’homme bicentenaire,https://www.babelio.com/couv/CVT_Lhomme-bicentenaire_18.jpg,https://www.babelio.com/livres/Asimov-Lhomme-bicentenaire/7282,Read
 Russian Federation,RU,Youri Rytkhèou,L'étrangère aux yeux bleus,https://www.babelio.com/couv/CVT_Letrangere-aux-yeux-bleus_4973.jpg,https://www.babelio.com/livres/Rytkheou-Letrangere-aux-yeux-bleus/37245,Read
 Rwanda,RW,Gaël Faye,Petit pays,https://www.babelio.com/couv/CVT_Petit-pays_8213.jpg,https://www.babelio.com/livres/Faye-Petit-pays/847696,Read
+Rwanda,RW,Scholastique Mukasonga, Notre-Dame du Nil,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1352989702i/15834420.jpg,https://www.goodreads.com/book/show/15834420-notre-dame-du-nil?ref=nav_sb_ss_1_18,To read
 Saudi Arabia,SA,Rajaa  Alsanea,Les filles de Riyadh,https://www.babelio.com/couv/CVT_Les-filles-de-Riyad--Recit_8043.jpg,https://www.babelio.com/livres/Alsanea-Les-filles-de-Riyad--Recit/130970,Read
 Saudi Arabia,SA,Raif  Badawi,1000 coups de fouet - Parce que j'ai osé parler librement,https://images-na.ssl-images-amazon.com/images/I/511ZQikG7EL._SX195_.jpg,https://www.babelio.com/livres/Badawi-1000-coups-de-fouet-Parce-que-jai-ose-parler-li/723754,Read
+Saudi Arabia,SA,Abdul Rahman Munif,Villes de sel: l'errance ,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1433852411i/25693328.jpg,https://www.goodreads.com/book/show/25693328-villes-de-sel?ref=nav_sb_ss_1_25,To read
 Senegal,SN,Fatou Diome,Celles qui attendent,https://www.babelio.com/couv/CVT_Celles-qui-attendent_1998.jpg,https://www.babelio.com/livres/Diome-Celles-qui-attendent/189052,Read
 Senegal,SN,Fatou Diome,Les veilleurs de Sangomar,https://www.babelio.com/couv/CVT_Les-veilleurs-de-Sangomar_3376.jpg,https://www.babelio.com/livres/Diome-Celles-qui-attendent/189052,Read
 Senegal,SN,Mariama Mâ,Une si longue lettre,https://www.babelio.com/couv/CVT_Une-si-longue-lettre_3781.jpg,https://www.babelio.com/livres/Ba-Une-si-longue-lettre/3426,Read
+Senegal,SN,Fatou Diome,Le Ventre de l'Atlantique,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348966330i/996088.jpg,https://www.goodreads.com/book/show/996088.Le_Ventre_de_l_Atlantique?ref=nav_sb_ss_1_25,To read
+Senegal,SN,Mohamed  Mbougar Sarr, La plus secrète mémoire des hommes,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1629962140i/58859524.jpg,https://www.goodreads.com/book/show/58859524-la-plus-secr-te-m-moire-des-hommes?ref=nav_sb_ss_1_35,To read
+Serbia,RS,Goran Petrović, Soixante-neuf tiroirs,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327685189i/7570513.jpg,https://www.goodreads.com/book/show/7570513-soixante-neuf-tiroirs?ref=nav_sb_ss_1_22,To read
+Slovakia,SK,Peter Pišťanek,Rivers of Babylon,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1626607118i/2525171.jpg,https://www.goodreads.com/book/show/2525171.Rivers_of_Babylon?ref=nav_sb_ss_2_17,To read
 Slovenia,SI,Drago Jančar,Cette nuit je l'ai vue,https://www.babelio.com/couv/CVT_Cette-nuit-je-lai-vue_2819.jpg,https://www.babelio.com/livres/Jancar-Cette-nuit-je-lai-vue/563679,Read
+Somalia,SO,Nuruddin Farah,Territoires,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1624735265i/2296544.jpg,https://www.goodreads.com/book/show/2296544.Territoires?ref=nav_sb_ss_1_17,To read
 South Africa,ZA,Meyer Deon,13 heures,https://www.babelio.com/couv/CVT_Treize-Heures_1165.jpg,https://www.babelio.com/livres/Meyer-13-Heures/244728,Read
 Spain,ES,Carlos  Ruiz Zafón, Le Jeu de l'ange,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327669415i/6642699.jpg,https://www.goodreads.com/book/show/6642699-le-jeu-de-l-ange?ac=1&from_search=true&qid=WqoHbqFseS&rank=1,Read
 Spain,ES,Carlos  Ruiz Zafón,L'ombre du vent,https://www.babelio.com/couv/CVT_Lombre-du-vent_7096.jpg,https://www.babelio.com/livres/Ruiz-Zafon-Lombre-du-vent/3143,Read
+Spain,ES,Carlos  Ruiz Zafón,Le prisonnier du ciel,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1353675542i/16166293.jpg,https://www.goodreads.com/book/show/16166293-le-prisonnier-du-ciel?ac=1&from_search=true&qid=I8mJOg63GX&rank=1,To read
+Spain,ES,Carlos  Ruiz Zafón,Le Labyrinthe des esprits,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1546634638i/40030852.jpg,https://www.goodreads.com/book/show/40030852-le-labyrinthe-des-esprits?ref=nav_sb_ss_1_25,To read
 Sudan,SD,Tayeb Salih,Saison de la migration vers le nord,https://www.babelio.com/couv/CVT_Saison-de-la-Migration-vers-le-Nord_8656.jpg,https://www.babelio.com/livres/Salih-Saison-de-la-Migration-vers-le-Nord/20607,Read
 Sweden,SE,Ann-Helén Laestadius,Stöld,https://www.babelio.com/couv/CVT_Stld_8988.jpg,https://www.babelio.com/livres/Laestadius-Stld/1450106,Read
 Syrian Arab Republic,SY,Riad Sattouf,L’arabe du futur,https://www.babelio.com/couv/CVT_CVT_Larabe-du-futur_928.jpg,https://www.babelio.com/livres/Sattouf-LArabe-du-futur-tome-1--Une-jeunesse-au-Moyen-Or/610161,Read
@@ -288,86 +353,22 @@ Syrian Arab Republic,SY,Riad Sattouf,L’arabe du futur,https://www.babelio.com/
 "Tanzania, United Republic of",TZ,Abdulrazak Gurnah,Près de la mer,https://www.babelio.com/couv/CVT_Pres-de-la-mer_1924.jpg,https://www.babelio.com/livres/Gurnah-Pres-de-la-mer/239662,Read
 Trinidad and Tobago,TT,V.S. Naipaul,Une maison pour M. Biswas,https://www.babelio.com/couv/CVT_Une-maison-pour-monsieur-Biswas_297.jpg,https://www.babelio.com/livres/Naipaul-Une-maison-pour-monsieur-Biswas/77496,Read
 Turkey,TR,Orhan Pamuk,Mon nom est Rouge,https://www.babelio.com/couv/CVT_cvt_Mon-nom-est-Rouge_4924.jpg,https://www.babelio.com/livres/Pamuk-Mon-nom-est-Rouge/2059,Read
+Turkmenistan,TM,Ak  Welsapar, The Tale of Aypi,https://www.babelio.com/couv/CVT_The-tale-of-Aypi_2111.jpg,https://www.goodreads.com/book/show/24102620-the-tale-of-aypi?ref=nav_sb_ss_1_17,To read
+Uganda,UG,Moses Isegawa, Chroniques abyssiniennes,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1180320475i/1026082.jpg,https://www.goodreads.com/book/show/1026082.Chroniques_abyssiniennes?ref=nav_sb_ss_1_25,To read
+Ukraine,UA,Andreï  Kourkov,Le Pingouin,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1171837077i/122032.jpg,https://www.goodreads.com/book/show/122032.Le_Pingouin?from_search=true&from_srp=true&qid=qtaQ8ObKBm&rank=1,To read
+United Arab Emirates,AE,Maha  Gargash,The Sand Fish: A Novel from Dubai,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1564758024i/6575431.jpg,https://www.goodreads.com/book/show/6575431-the-sand-fish?ref=nav_sb_ss_1_33,To read
 United Kingdom of Great Britain and Northern Ireland,GB,Philip Pullman,La croisée des mondes,https://www.babelio.com/couv/CVT_cvt_A-la-croisee-des-mondes-Tome-1--Les-royaumes-du-N_2884.jpg,https://www.babelio.com/livres/Pullman--la-croisee-des-mondes-tome-1--Les-royaumes-du-N/5533,Read
 United States of America,US,Robin Hobb,L’assassin royal,https://www.babelio.com/couv/CVT_15529_834672.jpg,https://www.babelio.com/livres/Hobb-LAssassin-royal-tome-1--LApprenti-assassin/6863,Read
 United States of America,US,Ernest Hemingway,Le viel homme et la mer,https://www.babelio.com/couv/CVT_Le-vieil-homme-et-la-mer_1592.jpg,https://www.babelio.com/livres/Hemingway-Le-vieil-homme-et-la-mer/1143209,Read
 United States of America,US,Nnedi Okorafor,Qui a peur de la mort ?,https://www.babelio.com/couv/CVT_CVT_Qui-a-peur-de-la-mort-_6478.jpg,https://www.babelio.com/livres/Okorafor-Qui-a-peur-de-la-mort-/524959,Read
 United States of America,US,Toni Morrison,Beloved,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1632283781i/6149.jpg,https://www.goodreads.com/book/show/6149.Beloved?from_search=true&from_srp=true&qid=0ycN3Xp0pu&rank=1,Read
+United States of America,US,Toni Morrison,L'Oeil le plus bleu,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1182280039i/1253815.jpg,https://www.goodreads.com/book/show/1253815.L_Oeil_le_plus_bleu?ref=nav_sb_ss_1_19,To read
 Uzbekistan,UZ,Hamid Ismaïlov,Dans les eaux du lac interdit,https://images-na.ssl-images-amazon.com/images/I/513eJy7wkhL._SX210_.jpg,https://www.babelio.com/livres/Ismailov-Dans-les-eaux-du-lac-interdit/742989,Read
 Viet Nam,VN,Thu Hương Dương,Les paradis aveugles,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1396368049i/21817982.jpg,https://www.goodreads.com/book/show/21817982-les-paradis-aveugles,Read
 Viet Nam,VN,Thu Hương Dương,Terre des oublis,https://www.babelio.com/couv/CVT_13487_724458.jpg,https://www.babelio.com/livres/Thu-Huong-Terre-des-oublis/14435,Read
-Norway,NO,Knut Hamsun,La Faim,https://www.babelio.com/couv/CVT_La-Faim_7948.jpg,https://www.babelio.com/livres/Hamsun-La-Faim/2056,To read
-Oman,OM,Jokha Alharthi,Les Corps célestes,https://m.media-amazon.com/images/I/51FycaqxwbL._SX210_.jpg,https://www.babelio.com/livres/Alharthi-Les-corps-celestes/1155982,To read
-Cambodge,KH,Somaly Mam,Le silence de l'innocence,https://www.babelio.com/couv/CVT_Le-silence-de-linnocence_2187.jpg,https://www.babelio.com/livres/Mam-Le-silence-de-linnocence/13217,To read
-Denmark,DK,Peter Høeg,Smilla et l'amour de la neige,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1294618520i/201092.jpg,https://www.babelio.com/livres/Hoeg-Smilla-et-lamour-de-la-neige/5730,To read
-Lithuania,LT,Valdas Papievis,Un morceau de ciel sur terre,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1634568960i/57615696.jpg,https://www.goodreads.com/book/show/57615696-un-morceau-de-ciel-sur-terre,To read
-Lithuania,LT,Juozas Baltušis,La Saga de Youza,https://www.babelio.com/couv/CVT_La-saga-de-Youza_8528.jpg,https://www.babelio.com/livres/Baltusis-La-Saga-de-Youza/12837,To read
-Zimbabwe,ZW,Tsitsi Dangarembga,Nervous Conditions,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1369859435i/158674.jpg,https://www.goodreads.com/book/show/158674.Nervous_Conditions,To read
-Afghanistan,AF,Khaled Hosseini, Mille Soleils splendides,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1331407044i/1290334.jpg,https://www.goodreads.com/book/show/1290334.Mille_Soleils_splendides?ac=1&from_search=true&qid=ucYH9Zo9wC&rank=1,To read
-Armenia,AM,Mariam Petrosyan,La maison dans laquelle,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1458546351i/29564884.jpg,https://www.goodreads.com/book/show/29564884-la-maison-dans-laquelle,To read
-Australia,AU,Richard  Flanagan,Désirer,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1470577637i/8429419.jpg,https://www.goodreads.com/book/show/8429419-d-sirer?ac=1&from_search=true&qid=7XuDvBoGHm&rank=1,To read
-Bangladesh,BD,Tahmima  Anam,Une vie de choix,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1508183488i/10784478.jpg,https://www.goodreads.com/book/show/10784478-une-vie-de-choix?ref=nav_sb_ss_1_16,To read
-Belgium,BE,Jeroen  Olyslaegers,Trouble,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1545068163i/43255414.jpg,https://www.goodreads.com/book/show/43255414-trouble?from_search=true&from_srp=true&qid=RqQbe97g8M&rank=1,To read
-Belize,BZ,Zee  Edgell,Beka Lamb,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386912613i/271489.jpg,https://www.goodreads.com/book/show/271489.Beka_Lamb?ref=nav_sb_ss_1_9,To read
-Benin,BJ,Florent  Couao-Zotti,Western tchoukoutou,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1557748637i/45730853.jpg,https://www.goodreads.com/book/show/45730853-western-tchoukoutou?from_search=true&from_srp=true&qid=DcPXOlDRH8&rank=1,To read
-Bosnia and Herzegovina,BA,Ivo  Andrić,Le pont sur la Drina,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1530257651i/3147.jpg,https://www.goodreads.com/book/show/3147.Le_Pont_sur_la_Drina?ref=nav_sb_ss_1_20,To read
-Cabo Verde,CV,Dina  Salústio,The Madwoman of Serrano,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1546196245i/41945083.jpg,https://www.goodreads.com/book/show/41945083-the-madwoman-of-serrano?ref=nav_sb_ss_1_23,To read
-Cameroon,CM,Mutt-Lon,Ceux qui sortent dans la nuit,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1377070530i/18363221.jpg,https://www.goodreads.com/book/show/18363221-ceux-qui-sortent-dans-la-nuit?ref=nav_sb_ss_1_29,To read
-Cameroon,CM,Léonora Miano, La Saison de l'ombre,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1377499918i/18375176.jpg,https://www.goodreads.com/book/show/18375176-la-saison-de-l-ombre?ref=nav_sb_ss_1_21,To read
-Comoros,KM,Ali  Zamir,Anguille sous roche,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1461890066i/30053009.jpg,https://www.goodreads.com/book/show/30053009-anguille-sous-roche?ref=nav_sb_ss_1_19,To read
-Congo,CG,Henri Lopes, Le Pleurer-Rire,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1572513201i/5466679.jpg,https://www.goodreads.com/book/show/5466679-le-pleurer-rire?ref=nav_sb_ss_1_16,To read
-"Congo, Democratic Republic of the",CD,Sony Labou Tansi,L'anté-peuple,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1598718293i/11836029.jpg,https://www.goodreads.com/book/show/11836029-l-ant--peuple?ref=nav_sb_ss_1_13,To read
-"Congo, Democratic Republic of the",CD,Sony Labou Tansi,L'anté-peuple,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1634314842i/59353886.jpg,https://www.goodreads.com/book/show/59353886-la-force-des-femmes?ac=1&from_search=true&qid=qJZsnx4fJE&rank=1,To read
-Czechia,CZ,Milan Kundera,L'insoutenable légèreté de l'être,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327291593i/835810.jpg,https://www.goodreads.com/book/show/835810.L_Insoutenable_l_g_ret_de_l_tre,To read
-Côte d'Ivoire,CI,Ahmadou Kourouma,Les Soleils des indépendances,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1343464469i/939743.jpg,https://www.goodreads.com/book/show/939743.Les_Soleils_des_ind_pendances?ref=nav_sb_ss_1_29,To read
-Dominican Republic,DO,Junot  Díaz,La Brève et Merveilleuse Vie d'Oscar Wao,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1357174598i/8447276.jpg,https://www.goodreads.com/book/show/8447276-la-br-ve-et-merveilleuse-vie-d-oscar-wao?ref=nav_sb_ss_1_40,To read
-Ethiopia,ET,Maaza Mengiste,Sous le regard du lion,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1678260124i/81264731.jpg,https://www.goodreads.com/book/show/81264731-sous-le-regard-du-lion-romans-nouvelles-r-cits?ref=nav_sb_ss_1_22,To read
-Finland,FI,Kari  Hotakainen,La part de l'homme,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1292849887i/9967056.jpg,https://www.goodreads.com/book/show/9967056-la-part-de-l-homme?ref=nav_sb_ss_1_18,To read
-Ghana,GH,Ayi Kwei Armah,The Beautiful Ones Are Not Yet Born,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1539270337i/42255306.jpg,https://www.goodreads.com/book/show/42255306-the-beautiful-ones-are-not-yet-born?from_search=true&from_srp=true&qid=Sbsh1XFKTM&rank=1,To read
-Guatemala,GT,Miguel Ángel Asturias,Hommes de maïs,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1355092340i/1920470.jpg,https://www.goodreads.com/book/show/1920470.Hommes_de_Mais?from_search=true&from_srp=true&qid=3nf2e6V6Az&rank=1,To read
-Guinea,GN,Tierno Monénembo, Le Roi de Kahel,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387368812i/6136714.jpg,https://www.goodreads.com/book/show/6136714-le-roi-de-kahel?from_search=true&from_srp=true&qid=RJuxFuLVqP&rank=1,To read
-Haiti,HT,Jacques  Roumain,Gouverneurs de la rosée,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1172672083i/204987.jpg,https://www.goodreads.com/book/show/204987.Gouverneurs_de_la_ros_e?ref=nav_sb_ss_1_23,To read
-Hungary,HU,Imre Kertész,Être sans destin,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1331567945i/2957382.jpg,https://www.goodreads.com/book/show/2957382-tre-sans-destin,To read
-Indonesia,ID,Pramoedya Ananta  Toer, Le Monde des hommes,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1539207584i/42273846.jpg,https://www.goodreads.com/book/show/42273846-le-monde-des-hommes?ref=nav_sb_ss_1_20,To read
-Iraq,IQ,Sinan Antoon,LI'jaam,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1328774919i/129302.jpg,https://www.goodreads.com/book/show/129302.I_jaam,To read
-Jamaica,JM,Marlon  James,Brève histoire de sept meurtres,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474701085i/31612050.jpg,https://www.goodreads.com/book/show/31612050-br-ve-histoire-de-sept-meurtres?ref=nav_sb_ss_1_31,To read
-Japan,JP,Ogawa Ito,La Papeterie Tsubaki,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1614858468i/40671013.jpg,https://www.goodreads.com/book/show/40671013-la-papeterie-tsubaki?ref=nav_sb_ss_1_10,To read
-Jordan,JO,Abdul Rahman Munif,Cities of Salt,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1644691098i/2722.jpg,https://www.goodreads.com/book/show/2722.Cities_of_Salt,To read
-Jordan,JO,Ibrahim  Nasrallah,Time of White Horses,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1338386997i/13583271.jpg,https://www.goodreads.com/book/show/13583271-time-of-white-horses?ref=nav_sb_ss_1_20,To read
-Jordan,JO,Rabih Alameddine,Les Vies de papier,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1472212585i/31683802.jpg,https://www.goodreads.com/book/show/31683802-les-vies-de-papier,To read
-Kenya,KE,Ngũgĩ  wa Thiong'o, Pétales de sang,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1412847427i/23346100.jpg,https://www.goodreads.com/book/show/23346100-p-tales-de-sang?ref=nav_sb_ss_2_16,To read
-Lebanon,LB,Amin Maalouf, Le Rocher de Tanios,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348943220i/456580.jpg,https://www.goodreads.com/book/show/456580.Le_Rocher_de_Tanios_Ldp_Litterature_?ref=nav_sb_ss_1_20,To read
-Lithuania,LT,Juozas Baltušis, La Saga de Youza,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1470726305i/31378947.jpg,https://www.goodreads.com/book/show/31378947-la-saga-de-youza?ref=nav_sb_ss_1_17,To read
-Mali,ML,Amadou Hampâté Bâ," Amkoullel, l'enfant Peul",https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1187622962i/1739331.jpg,https://www.goodreads.com/book/show/1739331.Amkoullel_l_enfant_Peul?ref=nav_sb_ss_1_25,To read
-Martinique,MQ,Aimé  Césaire,Cahier d'un retour au pays natal,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1172296554i/161956.jpg,https://www.goodreads.com/book/show/161956.Cahier_d_un_retour_au_pays_natal?ref=nav_sb_ss_1_32,To read
-Mongolia,MN,Galsan Tschinag, La fin du chant,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468399986i/31111271.jpg,https://www.goodreads.com/book/show/31111271-la-fin-du-chant?ref=nav_sb_ss_1_16,To read
-Morocco,MA,Leïla Slimani,Chanson douce,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474042770i/32060287.jpg,https://www.goodreads.com/book/show/32060287-chanson-douce?ref=nav_sb_ss_1_13,To read
-New Zealand,NZ,Alan  Duff,L'Ame des guerriers,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1376728356i/18337056.jpg,https://www.goodreads.com/book/show/18337056-l-me-des-guerriers?ref=nav_sb_ss_1_19,To read
-Nigeria,NG,Wole  Soyinka,La Mort et l'écuyer du roi,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1454261026i/28814095.jpg,https://www.goodreads.com/book/show/28814095-la-mort-et-l-cuyer-du-roi?ref=nav_sb_ss_1_26,To read
-Nigeria,NG,Chinua  Achebe,Tout s'effondre,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1484295837i/33848750.jpg,https://www.goodreads.com/book/show/33848750-tout-s-effondre?ref=nav_sb_ss_2_10,To read
-Norway,NO,Knut  Hamsun,La Faim,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327409667i/3140863.jpg,https://www.goodreads.com/book/show/3140863-la-faim?ref=nav_sb_ss_4_7,Read
-"Palestine, State of",PS,Ibrahim Jabra Jabra , Le Premier Puits,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1426800009i/25177497.jpg,https://www.goodreads.com/book/show/25177497-le-premier-puits?ref=nav_sb_ss_1_17,To read
-Peru,PE,Mario Vargas Llagos,Cent ans de solitude,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1355801632i/1019793.jpg,https://www.goodreads.com/book/show/1019793.Cent_ans_de_solitude?ref=nav_sb_ss_1_20,To read
-Peru,PE,Mario Vargas Llagos, Le héros discret,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1435760919i/25831543.jpg,https://www.goodreads.com/book/show/25831543-le-h-ros-discret?ref=nav_sb_ss_1_17,To read
-Rwanda,RW,Scholastique Mukasonga, Notre-Dame du Nil,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1352989702i/15834420.jpg,https://www.goodreads.com/book/show/15834420-notre-dame-du-nil?ref=nav_sb_ss_1_18,To read
-Saudi Arabia,SA,Abdul Rahman Munif,Villes de sel: l'errance ,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1433852411i/25693328.jpg,https://www.goodreads.com/book/show/25693328-villes-de-sel?ref=nav_sb_ss_1_25,To read
-Senegal,SN,Fatou Diome,Le Ventre de l'Atlantique,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348966330i/996088.jpg,https://www.goodreads.com/book/show/996088.Le_Ventre_de_l_Atlantique?ref=nav_sb_ss_1_25,To read
-Senegal,SN,Mohamed  Mbougar Sarr, La plus secrète mémoire des hommes,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1629962140i/58859524.jpg,https://www.goodreads.com/book/show/58859524-la-plus-secr-te-m-moire-des-hommes?ref=nav_sb_ss_1_35,To read
-Serbia,RS,Goran Petrović, Soixante-neuf tiroirs,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327685189i/7570513.jpg,https://www.goodreads.com/book/show/7570513-soixante-neuf-tiroirs?ref=nav_sb_ss_1_22,To read
-Slovakia,SK,Peter Pišťanek,Rivers of Babylon,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1626607118i/2525171.jpg,https://www.goodreads.com/book/show/2525171.Rivers_of_Babylon?ref=nav_sb_ss_2_17,To read
-Somalia,SO,Nuruddin Farah,Territoires,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1624735265i/2296544.jpg,https://www.goodreads.com/book/show/2296544.Territoires?ref=nav_sb_ss_1_17,To read
-Spain,ES,Carlos  Ruiz Zafón,Le prisonnier du ciel,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1353675542i/16166293.jpg,https://www.goodreads.com/book/show/16166293-le-prisonnier-du-ciel?ac=1&from_search=true&qid=I8mJOg63GX&rank=1,To read
-Spain,ES,Carlos  Ruiz Zafón,Le Labyrinthe des esprits,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1546634638i/40030852.jpg,https://www.goodreads.com/book/show/40030852-le-labyrinthe-des-esprits?ref=nav_sb_ss_1_25,To read
-Turkmenistan,TM,Ak  Welsapar, The Tale of Aypi,https://www.babelio.com/couv/CVT_The-tale-of-Aypi_2111.jpg,https://www.goodreads.com/book/show/24102620-the-tale-of-aypi?ref=nav_sb_ss_1_17,To read
-Uganda,UG,Moses Isegawa, Chroniques abyssiniennes,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1180320475i/1026082.jpg,https://www.goodreads.com/book/show/1026082.Chroniques_abyssiniennes?ref=nav_sb_ss_1_25,To read
-Ukraine,UA,Andreï  Kourkov,Le Pingouin,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1171837077i/122032.jpg,https://www.goodreads.com/book/show/122032.Le_Pingouin?from_search=true&from_srp=true&qid=qtaQ8ObKBm&rank=1,To read
-United Arab Emirates,AE,Maha  Gargash,The Sand Fish: A Novel from Dubai,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1564758024i/6575431.jpg,https://www.goodreads.com/book/show/6575431-the-sand-fish?ref=nav_sb_ss_1_33,To read
-United States of America,US,Toni Morrison,L'Oeil le plus bleu,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1182280039i/1253815.jpg,https://www.goodreads.com/book/show/1253815.L_Oeil_le_plus_bleu?ref=nav_sb_ss_1_19,To read
 Viet Nam,VN,Thu Hương Dương,Les paradis aveugles,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1396368049i/21817982.jpg,https://www.goodreads.com/book/show/21817982-les-paradis-aveugles?from_search=true&from_srp=true&qid=RQjDyskc6I&rank=1,To read
 Yemen,YE,Ali  Al-Muqri,Le beau juif,https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1415308424i/23509427.jpg,https://www.goodreads.com/book/show/23509427-le-beau-juif?ref=nav_sb_ss_1_12,To read
-Kenya,KE,Margaret A. Ogola,The River and the Source,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1347665205i/2599364.jpg,https://www.goodreads.com/book/show/259.The_River_and_the_Source,To read
-Indonesia,ID,Pramoedya Ananta Toer,"Gadis Pantai, la fille du rivage",https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1182495583i/1284774.jpg,https://www.goodreads.com/book/show/1284774.Gadis_Pantai,To read
-Argentina,AR,Camila Sosa Villada,Histoire d'une domestication,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1718940504i/211082910.jpg,https://www.goodreads.com/book/show/211082910-histoire-d-une-domestication,To read`;
+Zimbabwe,ZW,Tsitsi Dangarembga,Nervous Conditions,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1369859435i/158674.jpg,https://www.goodreads.com/book/show/158674.Nervous_Conditions,To read`;
 
 const countryCodes = {
     "Afghanistan": "af", "Afrique du Sud": "za", "Albanie": "al", "Algérie": "dz", "Allemagne": "de",
@@ -546,7 +547,6 @@ const manualCovers = {
     "un morceau de ciel sur terre": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1634568960i/57615696.jpg",
     "many lives": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1347389428i/665788.jpg",
     "follow the rabbit-proof fence": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1699125301i/1074300.jpg",
-    "la sorcière d'os": "https://m.media-amazon.com/images/I/41XR2MnpeFL._SX195_.jpg",
     "la sorcière à la jambe d'os": "https://m.media-amazon.com/images/I/41XR2MnpeFL._SX195_.jpg",
     "une île au loin": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1649342868i/60767553.jpg",
     "la trêve": "https://www.babelio.com/couv/CVT_La-Treve_3280.jpg",
@@ -781,7 +781,7 @@ const bookSummaries = {
     "l'insoutenable légèreté de l'être": "Prague, 1968. Les destins croisés de Tomas, Tereza, Sabina et Franz sur fond de Printemps de Prague et d'invasion soviétique. Kundera interroge le poids de l'existence, l'amour, la fidélité et le kitsch.",
     "the river and the source": "Une saga kényane qui suit quatre générations de femmes, depuis la chef traditionnelle Akoko jusqu'à ses arrière-petites-filles modernes. Un récit sur l'évolution de la société, la place des femmes et la transmission des valeurs.",
     "la première femme": "En Ouganda, Kirabo grandit chez ses grands-parents en écoutant les légendes locales. En quête de sa mère absente, elle découvre ses propres pouvoirs et la force des femmes dans une société marquée par la tradition et le patriarcat.",
-    "la sorcière d'os": "Dans la Croatie médiévale ou intemporelle, Baba Yaga vit dans une forêt. Le roman revisite le mythe de la sorcière slave, explorant la maternité, la nature sauvage et la place des femmes en marge de la société.",
+    "la sorcière à la jambe d'os": "Dans la Croatie médiévale ou intemporelle, Baba Yaga vit dans une forêt. Le roman revisite le mythe de la sorcière slave, explorant la maternité, la nature sauvage et la place des femmes en marge de la société.",
     "gadis pantai, la fille du rivage": "Java. Une belle jeune fille d'un village de pêcheurs est choisie pour devenir la concubine d'un noble javanais. Elle découvre le luxe mais aussi la servitude de la vie de palais, avant d'être rejetée.",
     "histoire d'une domestication": "Une actrice célèbre accepte de former une famille nucléaire traditionnelle pour se conformer aux attentes sociales, mais ce pacte faustien avec la normalité révèle la violence sourde des relations domestiques et le coût de la soumission."
 };
